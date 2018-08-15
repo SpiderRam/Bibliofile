@@ -1,39 +1,6 @@
 module.exports = function(app){
     var db = require("../models");
     var request= require("request");
-<<<<<<< HEAD
-
-    app.get("/home", function(req, res){
-        
-    });
-
-    //Will need to add unique user id to these endpoints
-    app.get("/for-sale", function(req, res){
-      
-        
-    });
-
-    app.get("/wishlist", function(req, res){
-        
-        
-    });
-
-    app.get("/library", function(req, res){
-        
-        
-    });
-        
-};
-   
-
-// db.Book.create({
-        //     title:"my first book"
-
-        // }).then(function(data){
-        //     res.json(data);
-        // });
-        
-=======
     var isbn = require('node-isbn');
     app.get("/save", function(req, res){
         db.Book.create({
@@ -60,4 +27,3 @@ module.exports = function(app){
 
 
    
->>>>>>> master
