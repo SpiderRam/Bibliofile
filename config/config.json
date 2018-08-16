@@ -1,8 +1,13 @@
 {
   "development": {
     "username": "root",
+<<<<<<< HEAD
     "password": "Mtierney25",
     "database": "library",
+=======
+    "password": "Trilogy2018",
+    "database": "library_db",
+>>>>>>> master
     "host": "127.0.0.1",
     "dialect": "mysql"
   },

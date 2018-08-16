@@ -1,0 +1,21 @@
+{
+  "name": "Bibliofile",
+  "version": "1.0.0",
+  "description": "Project 2 This project will match \"nerds\" with rare book finds.  A user will be able to store their personal library and find missing books within a series or by a specific author.  Users will login to store their own personal \"bibliofile.\"",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Reeshida/Bibliofile.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Reeshida/Bibliofile/issues"
+  },
+  "homepage": "https://github.com/Reeshida/Bibliofile#readme"
+}
