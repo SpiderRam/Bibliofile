@@ -31,11 +31,11 @@ module.exports = function(sequelize, DataTypes) {
             allowNull: true
         },
         Max_Price: {
-            type: Datatypes.DECIMAL(10, 2),
+            type: DataTypes.DECIMAL,
             allowNull: false
         },
         Notes: {
-            type: DataTypes.text,
+            type: DataTypes.TEXT,
             allowNull: true
         }
     }, {
