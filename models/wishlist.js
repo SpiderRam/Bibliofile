@@ -16,18 +16,27 @@ module.exports = function(sequelize, DataTypes) {
         },
         Title: {
             type: DataTypes.STRING,
+            allowNull: false
         },
         Author: {
-            type: DataTypes.STRING
+            type: DataTypes.STRING,
+            allowNull: false
         },
         Series: {
-            type: DataTypes.STRING
+            type: DataTypes.STRING,
+            allowNull: true
         },
         Format: {
-            type: DataTypes.STRING
+            type: DataTypes.STRING,
+            allowNull: true
         },
         Max_Price: {
-            type: Datatypes.DECIMAL(10, 2)
+            type: Datatypes.DECIMAL(10, 2),
+            allowNull: false
+        },
+        Notes: {
+            type: DataTypes.text,
+            allowNull: true
         }
     }, {
         freezeTableName: true

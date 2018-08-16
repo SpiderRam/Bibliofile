@@ -65,3 +65,9 @@ body {
 	position: absolute;
 	z-index: 100;
 }
+
+#formBox {
+	margin-top: 500px;
+	width: 80%;
+	background-color: blue;
+}
