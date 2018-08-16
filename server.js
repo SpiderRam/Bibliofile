@@ -20,12 +20,36 @@ app.use(express.static("public"));
 //         console.log('Book found %j', book);
 //     }
 // });
+// var express = require('express'),
+//     app = express(),
+//     http = require('http'),
+//     server = http.createServer(app),
+//     xmlparser = require('express-xml-bodyparser');
+ 
+// // .. other middleware ... 
+// app.use(express.json());
+// app.use(express.urlencoded());
+// app.use(xmlparser());
+// // ... other middleware ... 
+ 
+// app.post('/receive-xml', function(req, res, next) {
+ 
+//   // req.body contains the parsed xml
+ 
+// });
+ 
+// server.listen(1337);
+ 
+
+
+
 
 require("./routing/htmlRoutes.js")(app);
 require("./routing/apiRoutes.js")(app);
 
 db.sequelize.sync({ force: true }).then(function() {
     app.listen(PORT, function() {
+      console.log(db);
       console.log("App listening on PORT " + PORT);
     });
   });
