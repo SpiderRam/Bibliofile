@@ -1,9 +1,8 @@
+const request = require("request");
+const db = require("../models");
+var isbn = require('node-isbn');
+
 module.exports = function(app){
-
-    var db = require("../models");
-    var request= require("request");
-    var isbn = require('node-isbn');
-
     app.get("/save", function(req, res){
         db.Book.create({
             title:"my first book"
@@ -22,9 +21,7 @@ module.exports = function(app){
                 res.json(book);
             }
         });
-       
-        });
-
+    });
 };
 
 

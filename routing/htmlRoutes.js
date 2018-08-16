@@ -1,7 +1,7 @@
+const path = require("path");
 
 module.exports = function(app){
     
-    var path = require("path");
 
     app.get("/home", function(req, res){
         res.sendFile(path.join(__dirname, "../public/html/home.html"));
