@@ -3,15 +3,15 @@ module.exports = function(sequelize, DataTypes) {
     const Library = sequelize.define('library', {
         
         User_GUID: {
-            type: DataTypes.STRING,
+            type: DataTypes.INTEGER,
             // add foreign key
         },
         ISBN_10: {
-            type: DataTypes.STRING,
+            type: DataTypes.INTEGER,
             allowNull: true
         },
         ISBN_13: {
-            type: DataTypes.STRING,
+            type: DataTypes.INTEGER,
             allowNull: true
         },
         Title: {
