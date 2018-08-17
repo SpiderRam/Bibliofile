@@ -31,6 +31,11 @@ module.exports = function(sequelize, DataTypes) {
        } 
     );
 
+    Library.associate = function(models){
+        Library.hasMany(models.users);
+    };
+
+
     return Library;
 };
   
