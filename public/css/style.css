@@ -65,3 +65,12 @@ body {
 	position: absolute;
 	z-index: 100;
 }
+
+#formBox {
+	margin-top: 500px;
+	width: 80%;
+	background-color: blue;
+}
+
+/* to make the pages not transparent, use: */
+/* backface-visibility: hidden; */
