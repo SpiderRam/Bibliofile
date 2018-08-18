@@ -22,6 +22,9 @@ module.exports = function(app){
             }
         });
     });
+            app.post("/getbooksbytitle", function(req, res){
+                console.log("req.body", req.body);
+            })
 };
 
 

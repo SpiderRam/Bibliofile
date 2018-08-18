@@ -27,7 +27,7 @@ module.exports = function(sequelize, DataTypes) {
             type: DataTypes.STRING
         },
         Min_Price: {
-            type: Datatypes.DECIMAL(10, 2)
+            type: DataTypes.DECIMAL(10, 2)
         }
     }, {
         freezeTableName: true
