@@ -2,10 +2,6 @@ module.exports = function(sequelize, DataTypes) {
 
     const Library = sequelize.define('library', {
         
-        User_GUID: {
-            type: DataTypes.INTEGER,
-            // add foreign key
-        },
         ISBN_10: {
             type: DataTypes.INTEGER,
             allowNull: true
@@ -32,7 +28,7 @@ module.exports = function(sequelize, DataTypes) {
     );
 
     Library.associate = function(models){
-        Library.hasMany(models.users);
+        Library.hasOne(models.Users, { foreignKey: 'ID' });
     };
 
 

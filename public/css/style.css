@@ -71,3 +71,6 @@ body {
 	width: 80%;
 	background-color: blue;
 }
+
+/* to make the pages not transparent, use: */
+/* backface-visibility: hidden; */

@@ -2,10 +2,6 @@ module.exports = function(sequelize, DataTypes) {
 
     const ForSale = sequelize.define('for_sale', {
         
-        User_GUID: {
-            type: DataTypes.INTEGER,
-            // add foreign key
-        },
         ISBN_10: {
             type: DataTypes.INTEGER,
             allowNull: true
@@ -42,6 +38,10 @@ module.exports = function(sequelize, DataTypes) {
         freezeTableName: true
        } 
     );
+
+    ForSale.associate = function(models){
+        ForSale.hasOne(models.Users, { foreignKey: 'ID' });
+    };
 
     return ForSale;
 };
