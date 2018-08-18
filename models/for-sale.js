@@ -1,6 +1,6 @@
 module.exports = function(sequelize, DataTypes) {
 
-    const ForSale = sequelize.define('for_sale', {
+    const ForSale = sequelize.define('ForSale', {
         
         ISBN_10: {
             type: DataTypes.INTEGER,
@@ -39,8 +39,15 @@ module.exports = function(sequelize, DataTypes) {
        } 
     );
 
-    ForSale.associate = function(models){
-        ForSale.hasOne(models.Users, { foreignKey: 'ID' });
+    ForSale.associate = function(models) {
+        // We're saying that a ForSale entry should belong to a User
+        // A ForSale entry can't be created without a User due to the foreign key constraint
+        ForSale.belongsTo(models.Users, {
+            foreignKey: 
+                {
+                    allowNull: false
+                }
+        });
     };
 
     return ForSale;

@@ -1,6 +1,6 @@
 module.exports = function(sequelize, DataTypes) {
 
-    const Library = sequelize.define('library', {
+    const Library = sequelize.define('Library', {
         
         ISBN_10: {
             type: DataTypes.INTEGER,
@@ -27,8 +27,15 @@ module.exports = function(sequelize, DataTypes) {
        } 
     );
 
-    Library.associate = function(models){
-        Library.hasOne(models.Users, { foreignKey: 'ID' });
+    Library.associate = function(models) {
+        // We're saying that a Library entry should belong to a User
+        // A Library entry can't be created without a User due to the foreign key constraint
+        Library.belongsTo(models.Users, {
+            foreignKey: 
+                {
+                    allowNull: false
+                }
+        });
     };
 
 

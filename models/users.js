@@ -1,6 +1,6 @@
 module.exports = function(sequelize, DataTypes) {
 
-    const Users = sequelize.define('users', {
+    const Users = sequelize.define('Users', {
         
         username: {
             type: DataTypes.STRING,
@@ -19,40 +19,33 @@ module.exports = function(sequelize, DataTypes) {
        } 
     );
 
-    Library.associate = function(models) {
-        // We're saying that a Library entry should belong to a User
-        // A Library entry can't be created without a User due to the foreign key constraint
-        Library.belongsTo(models.Users, {
-            foreignKey: 
-                {
-                    allowNull: false
-                }
-        });
-    };
-
-    ForSale.associate = function(models) {
-        // We're saying that a Library entry should belong to a User
-        // A Library entry can't be created without a User due to the foreign key constraint
-        ForSale.belongsTo(models.Users, {
-            foreignKey: 
-                {
-                    allowNull: false
-                }
-        });
-    };
-
-    Wishlist.associate = function(models) {
-        // We're saying that a Library entry should belong to a User
-        // A Library entry can't be created without a User due to the foreign key constraint
-        Wishlist.belongsTo(models.Users, {
-            foreignKey: 
-                {
-                    allowNull: false
-                }
-        });
+    Users.associate = function(models) {
+        // Associating Users with Library entries
+        // When a User is deleted, also delete any associated Library entries
+        Users.hasMany(models.Library, 
+            {
+                onDelete: "cascade"
+            });
     };
     
-
+    Users.associate = function(models) {
+        // Associating Users with ForSale entries
+        // When a User is deleted, also delete any associated ForSale entries
+        Users.hasMany(models.ForSale, 
+            {
+                onDelete: "cascade"
+            });
+    };
+    
+    Users.associate = function(models) {
+        // Associating Users with Wishlist entries
+        // When a User is deleted, also delete any associated Wishlist entries
+        Users.hasMany(models.Wishlist, 
+            {
+                onDelete: "cascade"
+            });
+    };
+    
     return Users;
 };
   

@@ -1,6 +1,6 @@
 module.exports = function(sequelize, DataTypes) {
 
-    const Wishlist = sequelize.define('wishlist', {
+    const Wishlist = sequelize.define('Wishlist', {
         
         ISBN_10: {
             type: DataTypes.INTEGER,
@@ -39,10 +39,17 @@ module.exports = function(sequelize, DataTypes) {
        } 
     );
 
-    Wishlist.associate = function(models){
-        Wishlist.hasOne(models.Users, { foreignKey: 'ID' });
+    Wishlist.associate = function(models) {
+        // We're saying that a Wishlist entry should belong to a User
+        // A Wishlist entry can't be created without a User due to the foreign key constraint
+        Wishlist.belongsTo(models.Users, {
+            foreignKey: 
+                {
+                    allowNull: false
+                }
+        });
     };
-
+    
     return Wishlist;
 };
   
