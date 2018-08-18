@@ -1,17 +1,13 @@
 module.exports = function(sequelize, DataTypes) {
 
-    const Library = sequelize.define('library', {
+    const Library = sequelize.define('Library', {
         
-        User_GUID: {
-            type: DataTypes.INTEGER,
-            // add foreign key
-        },
         ISBN_10: {
             type: DataTypes.INTEGER,
             allowNull: true
         },
         ISBN_13: {
-            type: DataTypes.INTEGER,
+            type: DataTypes.INTEGER (13),
             allowNull: true
         },
         Title: {
@@ -30,6 +26,16 @@ module.exports = function(sequelize, DataTypes) {
         freezeTableName: true
        } 
     );
+
+    Library.associate = function(models) {
+        Library.belongsTo(models.Users, {
+            foreignKey: 
+                {
+                    allowNull: false
+                }
+        });
+    };
+
 
     return Library;
 };

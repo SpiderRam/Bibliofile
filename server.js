@@ -47,7 +47,16 @@ app.use(express.static("public"));
 require("./routing/htmlRoutes.js")(app);
 require("./routing/apiRoutes.js")(app);
 
-db.sequelize.sync({ force: true }).then(function() {
+// -----------------------------------------------------------------------
+// DO NOT DO THIS UNLESS YOU REALLY MEAN IT, YOU CAN'T GET THIS DATA BACK!
+//------------------------------------------------------------------------
+// if you need to delete everything in the db and start again, here you can use:
+// db.sequelize.sync({ force: true }).then(function() {
+// -----------------------------------------------------------------------
+// DO NOT DO THIS UNLESS YOU REALLY MEAN IT, YOU CAN'T GET THIS DATA BACK!
+//------------------------------------------------------------------------
+
+db.sequelize.sync().then(function() {
     app.listen(PORT, function() {
       console.log(db);
       console.log("App listening on PORT " + PORT);

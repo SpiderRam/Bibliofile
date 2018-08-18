@@ -1,6 +1,6 @@
 module.exports = function(sequelize, DataTypes) {
 
-    const Users = sequelize.define('users', {
+    const Users = sequelize.define('Users', {
         
         username: {
             type: DataTypes.STRING,
@@ -19,6 +19,27 @@ module.exports = function(sequelize, DataTypes) {
        } 
     );
 
+    Users.associate = function(models) {
+        Users.hasMany(models.Library, 
+            {
+                onDelete: "cascade"
+            });
+    };
+    
+    Users.associate = function(models) {
+        Users.hasMany(models.ForSale, 
+            {
+                onDelete: "cascade"
+            });
+    };
+    
+    Users.associate = function(models) {
+        Users.hasMany(models.Wishlist, 
+            {
+                onDelete: "cascade"
+            });
+    };
+    
     return Users;
 };
   
