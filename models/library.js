@@ -7,7 +7,7 @@ module.exports = function(sequelize, DataTypes) {
             allowNull: true
         },
         ISBN_13: {
-            type: DataTypes.INTEGER,
+            type: DataTypes.INTEGER (13),
             allowNull: true
         },
         Title: {
@@ -28,8 +28,6 @@ module.exports = function(sequelize, DataTypes) {
     );
 
     Library.associate = function(models) {
-        // We're saying that a Library entry should belong to a User
-        // A Library entry can't be created without a User due to the foreign key constraint
         Library.belongsTo(models.Users, {
             foreignKey: 
                 {
