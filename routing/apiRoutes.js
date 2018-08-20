@@ -37,7 +37,7 @@ module.exports = function(app){
     });
     
     app.get("/library", function(req, res){
-        isbn.resolve('1400201659', function (err, book) {
+        isbn.resolve('', function (err, book) {
             if (err) {
                 console.log('Book not found', err);
             } else {
