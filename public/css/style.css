@@ -176,3 +176,42 @@ a.nav-link.active.show {
 	background-color: transparent;
 	color:darkred;
 }
+
+#selectNextAction h4 {
+	margin: 10px 3% 0px 3%;
+	border-bottom: 1px solid gray;
+}
+
+.form-group {
+	margin: 10px 3% 15px 3%;
+}
+
+#searchSubmit {
+	margin-left: 3%;
+}
+
+#searchResults {
+	margin: 30px 10% 80px 10%;
+	background-image: url("../images/parchment.jpg");
+	border-radius: 15px;
+	border: 1px darkred solid;
+	font-family: 'IM Fell English SC', serif;
+	padding-bottom: 20px;
+}
+
+.btn-outline-secondary {
+	margin: 10px 0px;
+	font-family: 'IM Fell English SC', serif;
+	font-size: 30px;
+	background-color: darkred;
+	border: 1px solid black;
+	color: burlywood;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+	padding: 5px 30px;
+}
+
+.btn-outline-secondary:hover {
+	background-color: transparent;
+	color: darkred;
+	border: 1px solid black;
+}

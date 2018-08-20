@@ -77,12 +77,53 @@
 		<div class="card-header">
 			✒︎ Welcome, reader!
 		</div>
-		<ul class="list-group">
-			<li class="list-group-item">✒︎ Click <a href="library.html">here</a> to add a book to your library.</li>
-			<li class="list-group-item">✒︎ Click <a href="wishlist.html">here</a> to add a book to your wishlist.</li>
-			<li class="list-group-item">✒︎ Click <a href="for-sale.html">here</a> to add a book you'd like to sell.</li>
-		</ul>
+		<h4>Enter information into one field only, and search.</h4>
+		<form>
+			<div class="form-group">
+				<label for="wlIsbnInput">Search by ISBN:</label>
+				<input type="text" class="form-control" id="wlIsbnInput" placeholder="ISBN-10 or ISBN-13">
+			</div>
+			<div class="form-group">
+				<label for="wlTitleInput">Search by Title:</label>
+				<input type="text" class="form-control" id="wlTitleInput" placeholder="Spelling matters....">
+			</div>
+			<div class="form-group">
+				<label for="wlAuthorInput">Search by Author:</label>
+				<input type="text" class="form-control" id="wlAuthorInput" placeholder="Spelling matters....">
+			</div>
+			<div class="form-group">
+				<label for="wlSeriesInput">Search by Series:</label>
+				<input type="text" class="form-control" id="wlSeriesInput" placeholder="Spelling matters....">
+			</div>
+		</form>
+		<button id="searchSubmit" class="btn btn-primary">Search</button>
+		
 	</div>
+
+	<div class="card" id="searchResults" style="display: none">
+		<div class="card-header">
+			✒︎ Results:
+		</div>
+		<div class="card-body">
+			<h5 class="card-title">Select your book from the results, and then add it to the list of your choice.</h5>
+			
+			<div id="addToForSale" class="input-group mb-3">
+				<input type="text" class="form-control" placeholder="Set minimum price">
+				<div class="input-group-append">
+					<button class="btn btn-outline-secondary" type="button" id="addToForSaleButton">Add to For Sale</button>
+				</div>
+			</div>
+			<div id="addToWishlist" class="input-group mb-3">
+				<input type="text" class="form-control" placeholder="Set maximum price">
+				<div class="input-group-append">
+					<button class="btn btn-outline-secondary" type="button" id="addToWishlistButton">Add to Wishlist</button>
+				</div>
+			</div>
+			<button type="button" class="btn btn-primary btn-lg btn-block">Add to Library</button>
+		</div>
+	</div>
+	
+	
 	
 	
 
@@ -116,8 +157,8 @@ $('.nav-tabs li:eq(3) a').tab('show');
 
 
 
-function selectAction() {
-	document.getElementById("main").style.display="none"
+function hideMain() {
+	document.getElementById("main").style.display="none";
 	showActions();
 };
 
@@ -125,9 +166,20 @@ function showActions() {
 	document.getElementById("selectNextAction").style.display="block";
 };
 
-$("#signUp").on("click", selectAction);
+function showResults() {
+	document.getElementById("searchResults").style.display="block";
+};
 
-$("#signIn").on("click", selectAction);
+function displayResults() {
+	document.getElementById("selectNextAction").style.display="none";
+	showResults();
+}
+
+$("#signUp").on("click", hideMain);
+
+$("#signIn").on("click", hideMain);
+
+$("#searchSubmit").on("click", displayResults);
 
 
 </script>
