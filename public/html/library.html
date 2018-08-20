@@ -1,62 +1,79 @@
 <!DOCTYPE html>
 <html>
-    <head>
-		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-        <link type="text/css" href="../css/style.css" rel="stylesheet" media="screen" /> 
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-		<!-- Why is there an <img> in the <head>? -->
-		<img src="../images/logo.jpg" alt="logo" style="width:300px;height:150px" >
-		<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="crossorigin="anonymous"></script>
-		<script src = "../js/book.js"></script>
-	</head>
-	
-	<body>
-			<div>
+<head>
+  <title>Bibliofile Library</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css"/>	
+  <link type="text/css" href="../css/style.css" rel="stylesheet" media="screen"> 
+  <link href="https://fonts.googleapis.com/css?family=Cormorant|IM+Fell+English+SC" rel="stylesheet">
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="crossorigin="anonymous"></script>
+</head>
+
+<body>
+
+  <img src="../images/logo.jpg" alt="logo" id="logo">
+
+  <div class="card text-center" id="libraryMain">
+  
+    <div class="card-header">✒︎ Library</div>
+      <!-- <span class="navbar"><a href="home.html">Home</a><a href="wishlist.html">Wishlist</a><a href="for-sale.html">For Sale</a></span> -->
+      <div class="card-body">
+        <h3 class="card-title">Choose one field below to search for a book.  Select the result which matches your format and edition, and add it to your library.</h3>
+        <form>
+            <div class="form-group">
+              <label for="isbnInput">Search by ISBN:</label>
+              <input type="text" class="form-control" id="isbnInput" placeholder="ISBN-10 or ISBN-13">
+            </div>
+            <div class="form-group">
+              <label for="titleInput">Search by Title:</label>
+              <input type="text" class="form-control" id="titleInput" placeholder="Spelling matters....">
+            </div>
+            <div class="form-group">
+              <label for="authorInput">Search by Author:</label>
+              <input type="text" class="form-control" id="authorInput" placeholder="Spelling matters....">
+            </div>
+            <div class="form-group">
+              <label for="seriesInput">Search by Series:</label>
+              <input type="text" class="form-control" id="seriesInput" placeholder="Spelling matters....">
+            </div>
+          </form>
+        <button id="librarySubmit" class="btn btn-primary">Search</button>
+      </div>
+
+      <div class="card-footer">"I have two rules for a great book:  make me think and make me smile."<br>✒︎ Adam Grant</div>
+
+  </div>
+
+</body>
+</html>
+			
 		
-			</div>
-			<div>
-			
-			
-                <form>
-                    <div class="form-group">
-                            <div>
+  <script>
+    console.log("connected");
+    $("#librarySubmit").on("click", function(){
+        console.log("what you typed", $("#titleInput").val());
+        console.log($("#isbnInput").val());
 
-                      <label for="exampleFormControlInput1">Search New Book</label>
-                      <input type="email" class="form-control" id="titleInput" placeholder="Title">
-                    </div>
-                    <label for="exampleFormControlInput1">Search ISBN Number</label>
-                    <input type="email" class="form-control" id="isbnInput" placeholder="Enter Number">
-                  
-                    
-                    <div class="form-group">
-                      <label for="exampleFormControlTextarea1">Search by Series</label>
-                      <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-                      <div></div>
-                      <button id = "librarySubmit" type="button" class="btn btn-primary">SUBMIT</button>
-                    </div>
-                  </form>
-				
-			</div>
-    </div>
-   <script>
-    // console.log("connected");
-    // $("#librarySubmit").on("click", function(){
-    //     console.log("what you typed", $("#titleInput").val());
-    //     console.log($("#isbnInput").val());
+        if ($("#titleInput").val().length > 0){
+          console.log("search good reads");
+        } else if($("#isbnInput").val().length > 0){
+          console.log("search isbn");
+        }
+        $.ajax({
+            type:"get",
+            url:"https://cors-anywhere.herokuapp.com/"+"https://www.goodreads.com/search.xml?key=npMdKLrrzaYcjRKy80bUA&q="+$("#exampleFormControlInput1").val()
+        }).then(function(bookdata){
+            console.log("bookdata", bookdata);
+        });
+    });
+  </script>
 
-    //     if ($("#titleInput").val().length > 0){
-    //       console.log("search good reads");
-    //     } else if($("#isbnInput").val().length > 0){
-    //       console.log("search isbn");
-    //     }
-    //     $.ajax({
-    //         type:"get",
-    //         url:"https://cors-anywhere.herokuapp.com/"+"https://www.goodreads.com/search.xml?key=npMdKLrrzaYcjRKy80bUA&q="+$("#exampleFormControlInput1").val()
-    //     }).then(function(bookdata){
-    //         console.log("bookdata", bookdata);
-    //     });
-    // });
-    </script>
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
 
-  </body>
-  </html>
+<script>
+
+
+  	
