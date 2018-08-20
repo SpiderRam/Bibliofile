@@ -121,3 +121,27 @@ a.nav-link.active.show {
 	text-align: center;
 	font-size: 25px;
 }
+
+/* start forSale styling */
+
+#forSaleMain {
+	background-color: white;
+	margin: 30px 10% 80px 10%;
+	background-image: url("../images/parchment.jpg");
+	border-radius: 15px;
+	border: 1px darkred solid;
+	font-family: 'IM Fell English SC', serif;
+	padding-bottom: 20px;
+}
+
+/* start wishlist styling */
+
+#wishlistMain {
+	background-color: white;
+	margin: 30px 10% 80px 10%;
+	background-image: url("../images/parchment.jpg");
+	border-radius: 15px;
+	border: 1px darkred solid;
+	font-family: 'IM Fell English SC', serif;
+	padding-bottom: 20px;
+}

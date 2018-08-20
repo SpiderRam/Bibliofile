@@ -1,33 +1,49 @@
 <!DOCTYPE html>
 <html>
-    <head>
-		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-        <link type="text/css" href="../css/style.css" rel="stylesheet" media="screen" /> 
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-		<!-- Why is there an <img> in the <head>? -->
-		<img src="../images/logo.jpg" alt="logo" style="width:300px;height:150px" >
-		<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="crossorigin="anonymous"></script>
-		
-    </head>
-    
-    <form>
-            <div class="form-group">
-                    <div>
+<head>
+  <title>Bibliofile Wishlist</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css"/>	
+  <link type="text/css" href="../css/style.css" rel="stylesheet" media="screen"> 
+  <link href="https://fonts.googleapis.com/css?family=Cormorant|IM+Fell+English+SC" rel="stylesheet">
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="crossorigin="anonymous"></script>
+</head>
 
-              <label for="exampleFormControlInput1">Search New Book</label>
-              <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="Title">
-            </div>
-            <label for="exampleFormControlInput1">Search ISBN Number</label>
-            <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="Enter Number">
-          
-            
+<body>
+
+  <img src="../images/logo.jpg" alt="logo" id="logo">
+
+  <div class="card text-center" id="wishlistMain">
+  
+    <div class="card-header">✒︎ Wishlist</div>
+      
+      <div class="card-body">
+        <h3 class="card-title">Under construction</h3>
+        <form>
             <div class="form-group">
-              <label for="exampleFormControlTextarea1">Search by Series</label>
-              <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-              <div></div>
-              <button type="button" class="btn btn-primary">ADD BOOK</button>
+              <label for="wlIsbnInput">Search by ISBN:</label>
+              <input type="text" class="form-control" id="wlIsbnInput" placeholder="ISBN-10 or ISBN-13">
+            </div>
+            <div class="form-group">
+              <label for="wlTitleInput">Search by Title:</label>
+              <input type="text" class="form-control" id="wlTitleInput" placeholder="Spelling matters....">
+            </div>
+            <div class="form-group">
+              <label for="wlAuthorInput">Search by Author:</label>
+              <input type="text" class="form-control" id="wlAuthorInput" placeholder="Spelling matters....">
+            </div>
+            <div class="form-group">
+              <label for="wlSeriesInput">Search by Series:</label>
+              <input type="text" class="form-control" id="wlSeriesInput" placeholder="Spelling matters....">
             </div>
           </form>
-        
-    </div>
-</div>
+        <button id="wishlistSubmit" class="btn btn-primary">Search</button>
+      </div>
+
+      <div class="card-footer">"We read books to find out who we are. What other people, real or imaginary, do and think and feel... is an essential guide to our understanding of what we ourselves are and may become."  ✒︎ Ursula K. Le Guin</div>
+
+  </div>
+  
+</body>
+</html>
