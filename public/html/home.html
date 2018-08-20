@@ -14,7 +14,7 @@
 	
 	<img src="../images/logo.jpg" alt="logo" id="logo">
 	
-	<div id="main">
+	<div id="main" style="display: block">
 		<div class="container mt-3">
 			<p id="welcome">✒︎Welcome</p>
 			<br>
@@ -112,23 +112,22 @@ $('.nav-tabs a:last').tab('show');
 $('.nav-tabs li:eq(3) a').tab('show');
 
 
-const hideMain;
 
-function showActions() {
-    document.getElementById("selectNextAction").style.display = "block";
-}
+
 
 
 function selectAction() {
-	hideMain = $("#main").detach();
-	$("#main").html(hideMain);
+	document.getElementById("main").style.display="none"
 	showActions();
+};
+
+function showActions() {
+	document.getElementById("selectNextAction").style.display="block";
 };
 
 $("#signUp").on("click", selectAction);
 
-
-
+$("#signIn").on("click", selectAction);
 
 
 </script>
