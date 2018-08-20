@@ -1,43 +1,52 @@
 <!DOCTYPE html>
 <html>
-    <head>
-		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-        <link type="text/css" href="../css/style.css" rel="stylesheet" media="screen" /> 
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-		<!-- Why is there an <img> in the <head>? -->
-		<img src="../images/logo.jpg" alt="logo" style="width:300px;height:150px" >
-		<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="crossorigin="anonymous"></script>
-		<!-- <script src = "./js/books.js"></script> -->
-	</head>
-	
-	<body>
-			<div>
-		
-			</div>
-			<div>
-			
-			
-                <form>
-                    <div class="form-group">
-                            <div>
+<head>
+  <title>Bibliofile Library</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css"/>	
+  <link type="text/css" href="../css/style.css" rel="stylesheet" media="screen"> 
+  <link href="https://fonts.googleapis.com/css?family=Cormorant|IM+Fell+English+SC" rel="stylesheet">
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="crossorigin="anonymous"></script>
+</head>
 
-                      <label for="exampleFormControlInput1">Search New Book</label>
-                      <input type="email" class="form-control" id="titleInput" placeholder="Title">
-                    </div>
-                    <label for="exampleFormControlInput1">Search ISBN Number</label>
-                    <input type="email" class="form-control" id="isbnInput" placeholder="Enter Number">
-                  
-                    
-                    <div class="form-group">
-                      <label for="exampleFormControlTextarea1">Search by Series</label>
-                      <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-                      <div></div>
-                      <button id = "librarySubmit" type="button" class="btn btn-primary">SUBMIT</button>
-                    </div>
-                  </form>
-				
-			</div>
-    </div>
+<body>
+
+  <img src="../images/logo.jpg" alt="logo" id="logo">
+
+  <div class="card text-center" id="libraryMain">
+  
+    <div class="card-header">✒︎ Library</div>
+      
+      <div class="card-body">
+        <h3 class="card-title">Choose one field below to search for a book.  Select the result which matches your format and edition, and add it to your library.</h3>
+        <form>
+            <div class="form-group">
+              <label for="isbnInput">Search by ISBN:</label>
+              <input type="text" class="form-control" id="isbnInput" placeholder="ISBN-10 or ISBN-13">
+            </div>
+            <div class="form-group">
+              <label for="titleInput">Search by Title:</label>
+              <input type="text" class="form-control" id="titleInput" placeholder="Spelling matters....">
+            </div>
+            <div class="form-group">
+              <label for="authorSearch">Search by Author:</label>
+              <input type="text" class="form-control" id="authorSearch" placeholder="Spelling matters....">
+            </div>
+            <div class="form-group">
+              <label for="seriesSearch">Search by Series:</label>
+              <input type="text" class="form-control" id="seriesSearch" placeholder="Spelling matters....">
+            </div>
+          </form>
+        <button id="librarySubmit" class="btn btn-primary">Search</button>
+      </div>
+
+      <div class="card-footer">"I have two rules for a great book:  make me think and make me smile."  ✒︎ Adam Grant</div>
+
+  </div>
+
+			
+		
    <script>
     console.log("connected");
     $("#librarySubmit").on("click", function(){
@@ -60,3 +69,5 @@
 
   </body>
   </html>
+
+  	

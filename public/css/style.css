@@ -49,6 +49,14 @@ body {
 	background-color: darkred;
 	border: 1px solid black;
 	color: burlywood;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+	padding: 5px 30px;
+}
+
+.btn-primary:hover {
+	background-color: transparent;
+	color: darkred;
+	border: 1px solid black;
 }
 
 .nav-tabs {
@@ -73,4 +81,43 @@ a.nav-link.active.show {
 	background-color: darkred;
 	border-color: black;
 	color: burlywood;
+}
+
+/* start Library styling */
+
+#libraryMain {
+	background-color: white;
+	margin: 30px 10% 80px 10%;
+	background-image: url("../images/parchment.jpg");
+	border-radius: 15px;
+	border: 1px darkred solid;
+	font-family: 'IM Fell English SC', serif;
+	padding-bottom: 20px;
+}
+
+.card-header {
+	font-size: 50px;
+}
+
+.card-title {
+	margin-bottom: 15px;
+}
+
+.text-center {
+    text-align: left!important;
+}
+
+.form-group {
+	margin-bottom: 25px;
+	font-family: 'Cormorant', serif;
+	font-size: 20px;
+}
+
+.form-control {
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.card-footer {
+	text-align: center;
+	font-size: 25px;
 }
