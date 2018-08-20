@@ -10,7 +10,7 @@ body {
 }
 
 #main {
-	background-color: white;
+	
 	margin: 30px 10% 80px 10%;
 	background-image: url("../images/parchment.jpg");
 	border-radius: 15px;
@@ -30,6 +30,7 @@ body {
 #home p {
 	font-family: 'Cormorant', serif;
 	font-size: 20px;
+	font-weight: bold;
 }
 
 #menu1, #menu2 {
@@ -125,7 +126,6 @@ a.nav-link.active.show {
 /* start forSale styling */
 
 #forSaleMain {
-	background-color: white;
 	margin: 30px 10% 80px 10%;
 	background-image: url("../images/parchment.jpg");
 	border-radius: 15px;
@@ -137,11 +137,42 @@ a.nav-link.active.show {
 /* start wishlist styling */
 
 #wishlistMain {
-	background-color: white;
 	margin: 30px 10% 80px 10%;
 	background-image: url("../images/parchment.jpg");
 	border-radius: 15px;
 	border: 1px darkred solid;
 	font-family: 'IM Fell English SC', serif;
 	padding-bottom: 20px;
+}
+
+/* start next action styling */
+
+#selectNextAction {
+	margin: 30px 10% 80px 10%;
+	background-image: url("../images/parchment.jpg");
+	border-radius: 15px;
+	border: 1px darkred solid;
+	font-family: 'IM Fell English SC', serif;
+	padding-bottom: 20px;
+}
+
+.list-group-item {
+	background-image: url("../images/parchment.jpg");
+	font-family: 'Cormorant', serif;
+	font-size: 20px;
+	text-indent: 3%;
+}
+
+.list-group-item a {
+	background-color: darkred;
+	color: burlywood;
+	padding: 5px 10px;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+	border-radius: 10px;
+	border: solid 1px black;
+}
+
+.list-group-item a:hover {
+	background-color: transparent;
+	color:darkred;
 }

@@ -50,7 +50,7 @@
 					<label for="enterPassword">Password</label>
 					<input type="text" class="form-control" id="enterPassword" aria-describedby="emailHelp" placeholder="Enter Password">
 	
-					<button type="button" class="btn btn-primary">Sign in</button>	
+					<button type="button" id="signIn" class="btn btn-primary">Sign in</button>	
 				</div>
 
 				<div id="menu2" class="container tab-pane fade"><br>
@@ -65,11 +65,24 @@
 					<label for="createPassword">Password</label>
 					<input type="text" class="form-control" id="createPassword" aria-describedby="emailHelp" placeholder="Enter password">
 			
-					<button type="button" class="btn btn-primary">Sign up</button>	
+					<button type="button" id="signUp" class="btn btn-primary">Sign up</button>	
 				</div>
 			</div>
 		</div>
-	</div>			  
+	</div>	
+	
+	<!-- style="display: none" -->
+	
+	<div class="card" id="selectNextAction" style="display: none">
+		<div class="card-header">
+			✒︎ Welcome, reader!
+		</div>
+		<ul class="list-group">
+			<li class="list-group-item">✒︎ Click <a href="library.html">here</a> to add a book to your library.</li>
+			<li class="list-group-item">✒︎ Click <a href="wishlist.html">here</a> to add a book to your wishlist.</li>
+			<li class="list-group-item">✒︎ Click <a href="for-sale.html">here</a> to add a book you'd like to sell.</li>
+		</ul>
+	</div>
 	
 	
 
@@ -87,16 +100,36 @@ $('.nav-tabs a').click(function(){
 })
 
 // Select tab by name
-$('.nav-tabs a[href="#home"]').tab('show')
+$('.nav-tabs a[href="#home"]').tab('show');
 
 // Select first tab
-$('.nav-tabs a:first').tab('show') 
+$('.nav-tabs a:first').tab('show');
 
 // Select last tab
-$('.nav-tabs a:last').tab('show') 
+$('.nav-tabs a:last').tab('show'); 
 
 // Select fourth tab (zero-based)
-$('.nav-tabs li:eq(3) a').tab('show')
+$('.nav-tabs li:eq(3) a').tab('show');
+
+
+const hideMain;
+
+function showActions() {
+    document.getElementById("selectNextAction").style.display = "block";
+}
+
+
+function selectAction() {
+	hideMain = $("#main").detach();
+	$("#main").html(hideMain);
+	showActions();
+};
+
+$("#signUp").on("click", selectAction);
+
+
+
+
 
 </script>
 	
