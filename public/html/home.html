@@ -60,7 +60,7 @@
 					<input type="email" class="form-control" id="createEmail" aria-describedby="emailHelp" placeholder="Site is not secure, fake it">
 			
 					<label for="createUsername">Username</label>
-					<input type="text" class="form-control" id="createUsername" aria-describedby="emailHelp" placeholder="Choose a Username">
+					<input type="text" class="form-control" id="createUsername" aria-describedby="emailHelp" placeholder="Choose a username">
 			
 					<label for="createPassword">Password</label>
 					<input type="text" class="form-control" id="createPassword" aria-describedby="emailHelp" placeholder="Enter password">
@@ -105,11 +105,11 @@
 			✒︎ Results:
 		</div>
 		<div class="card-body">
-			<h5 class="card-title">Select your book from the results, and then add it to the list of your choice.</h5>
+			<h4 class="card-title">Select your book from the results, and then add it to the list of your choice.</h4>
 			
 			<div id="addToForSale" class="input-group mb-3">
 				<input type="text" class="form-control" placeholder="Set minimum price">
-				<div class="input-group-append">
+				<div class="input-group-append" id="buttonDiv">
 					<button class="btn btn-outline-secondary" type="button" id="addToForSaleButton">Add to For Sale</button>
 				</div>
 			</div>
@@ -138,7 +138,7 @@
 // Select all tabs
 $('.nav-tabs a').click(function(){
     $(this).tab('show');
-})
+});
 
 // Select tab by name
 $('.nav-tabs a[href="#home"]').tab('show');
@@ -151,10 +151,6 @@ $('.nav-tabs a:last').tab('show');
 
 // Select fourth tab (zero-based)
 $('.nav-tabs li:eq(3) a').tab('show');
-
-
-
-
 
 
 function hideMain() {
@@ -173,13 +169,35 @@ function showResults() {
 function displayResults() {
 	document.getElementById("selectNextAction").style.display="none";
 	showResults();
-}
+};
 
 $("#signUp").on("click", hideMain);
 
 $("#signIn").on("click", hideMain);
 
 $("#searchSubmit").on("click", displayResults);
+
+
+
+var returningUserEmail = $("#enterEmail").val().trim();
+var returningUserPassword = $("#enterPassword").val().trim();
+
+var newUserEmail = $("#createEmail").val().trim();
+var newUsername = $("#createUsername").val().trim();
+var newUserPassword = $("#createPassword").val().trim();
+
+var returningUser = {
+	"email": returningUserEmail,
+	"password": returningUserPassword
+};
+
+var newUser = {
+	"email": newUserEmail,
+	"username": newUsername,
+	"password": newUserPassword
+};
+
+
 
 
 </script>

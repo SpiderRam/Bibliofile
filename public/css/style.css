@@ -199,8 +199,12 @@ a.nav-link.active.show {
 	padding-bottom: 20px;
 }
 
+.form-control {
+	font-family: 'Cormorant', serif;
+	font-size: 20px;
+}
+
 .btn-outline-secondary {
-	margin: 10px 0px;
 	font-family: 'IM Fell English SC', serif;
 	font-size: 30px;
 	background-color: darkred;
