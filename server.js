@@ -11,7 +11,7 @@ var exphbs = require('express-handlebars');
 //Models
 var models = require("./models");
 //Routes
-var authRoute = require('./routing/auth.js')(app);
+// var authRoute = require('./routing/auth.js')(app);
  
 var PORT = process.env.PORT || 3000;
 
@@ -24,25 +24,25 @@ app.use(express.static("public"));
 
 // For Passport
  
-app.use(session({ secret: 'keyboard cat',resave: true, saveUninitialized:true})); // session secret
+// app.use(session({ secret: 'keyboard cat',resave: true, saveUninitialized:true})); // session secret
  
-app.use(passport.initialize());
+// app.use(passport.initialize());
  
-app.use(passport.session()); // persistent login sessions
+// app.use(passport.session()); // persistent login sessions
 
 
-//For Handlebars
-app.set('views', './app/views')
-app.engine('hbs', exphbs({
-  extname: '.hbs'
-}));
-app.set('view engine', '.hbs');
+// //For Handlebars
+// app.set('views', './app/views')
+// app.engine('hbs', exphbs({
+//   extname: '.hbs'
+// }));
+// app.set('view engine', '.hbs');
 
-app.get('/', function(req, res) {
+// app.get('/', function(req, res) {
  
-  res.send('Welcome to Passport with Sequelize');
+//   res.send('Welcome to Passport with Sequelize');
 
-});
+// });
 isbn.resolve('', function (err, book) {
     if (err) {
         console.log('Book not found', err);
