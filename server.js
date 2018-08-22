@@ -3,10 +3,10 @@ var app = express();
 var bodyParser = require("body-parser");
 var db = require("./models");
 var isbn = require('node-isbn');
-var passport = require('passport');
+// var passport = require('passport');
 var session = require('express-session');
 var env = require('dotenv').load();
-var exphbs = require('express-handlebars');
+// var exphbs = require('express-handlebars');
 
 //Models
 var models = require("./models");

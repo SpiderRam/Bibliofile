@@ -36,7 +36,7 @@ module.exports = function(app){
         });
     });
     
-    app.post("/library", function(req, res){
+    app.post("/", function(req, res){
         isbn.resolve('0735619670', function (err, book) {
             if (err) {
                 console.log('Book not found', err);

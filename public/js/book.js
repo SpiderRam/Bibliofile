@@ -2,7 +2,7 @@ $(document).ready(function(){
 
     console.log("connected");
 
-    $("#librarySubmit").on("click", function(){
+    $("#searchSubmit").on("click", function(){
         
         if ($("#titleInput").val().length > 0){
             console.log("search good reads");
@@ -22,9 +22,9 @@ $(document).ready(function(){
                 console.log("what you typed", $("#isbnInput").val());
                 $.ajax({
                     type:"GET",
-                    url:"/library"
+                    url:"/"
                 }).then(function(book){
-                    $.post("/library", bookdata, function(book){
+                    $.post("/", bookdata, function(book){
                         console.log(bookdata);
                         var cleanData = JSON.parse(book);
                         console.log("book", cleanData);
