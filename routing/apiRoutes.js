@@ -3,6 +3,13 @@ const db = require("../models");
 var isbn = require('node-isbn');
 
 module.exports = function(app){
+
+    app.post("/new-user", function(req, res) {
+        console.log("Request: " + req);
+        console.log("Response: " + res);
+        
+    });
+
     app.post("/library", function(req, res){
         // grab the data ad req.body. whatever
         // req.body.value
@@ -44,20 +51,9 @@ module.exports = function(app){
             }
         });
     });
-    app.post("/", function(req, res){
-        isbn.resolve('0735619670', function (err, book) {
-            if (err) {
-                console.log('Book not found', err);
-            } else {
-                console.log('Book found %j', book);
-                res.json(book);
-                res.send(book);
-            }
-        });
-    });
-            app.post("/getbooksbytitle", function(req, res){
-                console.log("req.body", req.body);
-            })
+
+
+           
 };
 
 
