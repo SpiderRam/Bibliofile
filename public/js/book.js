@@ -1,3 +1,4 @@
+
 $(document).ready(function(){
 
     console.log("connected");
@@ -16,23 +17,25 @@ $(document).ready(function(){
                 console.log("bookData",cleanData);
             });
         } else if($("#isbnInput").val().length > 0){
+            var isbn = $("#isbnInput").val();
             console.log($("#isbnInput").val());
               console.log("search isbn");
-              $("#isbn").on("click", function(){
-                console.log("what you typed", $("#isbnInput").val());
+            //   $("#isbn").on("click", function(){
+            //     console.log("what you typed", $("#isbnInput").val());
                 $.ajax({
                     type:"GET",
-                    url:"/"
-                }).then(function(book){
-                    $.post("/", bookdata, function(book){
-                        console.log(bookdata);
-                        var cleanData = JSON.parse(book);
-                        console.log("book", cleanData);
+                    url:"http://localhost:3000/books/" + isbn
+                }).then(function(response){
+                    // $.post("/", bookdata, function(book){
+                    //     console.log(bookdata);
+                    //     var cleanData = JSON.parse(book);
+                    //     console.log("book", cleanData);
                     
-                    })
-
+                    // });
+                    $("#book-title").text(response.title);
+                    console.log(response);
                 });
-            });
+            // });
         };
 //     $("#isbnBtn").on("click", function(){
 //         console.log("what you typed", $("#isbnInput").val());

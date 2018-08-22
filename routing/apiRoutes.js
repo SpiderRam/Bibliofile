@@ -36,6 +36,17 @@ module.exports = function(app){
         });
     });
     
+    app.get('/books/:isbn', function(req, res) {
+        var isbnNumber = req.params.isbn;
+        isbn.resolve(isbnNumber, function (err, book) {
+            if (err) {
+                console.log('Book not found', err);
+            } else {
+                console.log('Book found %j', book);
+                res.json(book);
+            }
+        });
+    });
     app.post("/", function(req, res){
         isbn.resolve('0735619670', function (err, book) {
             if (err) {
