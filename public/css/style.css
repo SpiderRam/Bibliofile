@@ -9,6 +9,33 @@ body {
 	height: 250px;
 }
 
+#dropdown {
+	float: right;
+
+}
+
+#addToForSale {
+
+    width: 1000px;
+    height: 70px;
+}
+
+#addToForSaleButton {
+    width: 400px;
+    height: 70px;
+}
+
+#addToWishlist {
+    width: 1000px;
+    height: 70px;
+
+}
+
+#addToWishlistButton {
+    width: 400px;
+    height: 70px;
+}
+
 #main {
 	
 	margin: 30px 10% 80px 10%;
