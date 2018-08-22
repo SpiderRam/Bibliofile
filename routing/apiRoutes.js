@@ -26,12 +26,9 @@ module.exports = function(app){
     });
 
     app.post("/wishlist", function(req, res){
-        
+        console.log("book we are about to save", req.body);
         // req.body.value
-        db.Wishlist.create({
-            title:"my first book"
-
-        }).then(function(data){
+        db.Wishlist.create(req.body).then(function(data){
             res.json(data);
         });
     });
