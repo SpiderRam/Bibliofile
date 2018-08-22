@@ -5,9 +5,8 @@ var isbn = require('node-isbn');
 module.exports = function(app){
 
     app.post("/new-user", function(req, res) {
-        console.log("Request: " + req);
-        console.log("Response: " + res);
-        
+        console.log("Request: " + JSON.stringify(req.body));
+        res.send("Sup homie");
     });
 
     app.post("/library", function(req, res){
@@ -46,14 +45,11 @@ module.exports = function(app){
             if (err) {
                 console.log('Book not found', err);
             } else {
-                console.log('Book found %j', book);
+                console.log('Book found', book);
                 res.json(book);
             }
         });
     });
-
-
-           
 };
 
 

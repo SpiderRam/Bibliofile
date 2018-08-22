@@ -14,7 +14,8 @@ $(document).ready(function(){
                     type:"GET",
                     url:"http://localhost:3000/books/" + isbn
                 }).then(function(response){
-                    $("#book-title").text(response.title);
+                    $("#book-title").text("✒︎ Title: " + response.title);
+                    $("#book-author").text("✒︎ Author: " + response.authors[0]);
                     console.log(response);
                     bookToSave = response;
                 });
@@ -23,16 +24,20 @@ $(document).ready(function(){
         }
     });
 
-    $("signUp").on("click", function() {
+    $("#signUp").on("click", function() {
         event.preventDefault();
 
+        var username = $("#createUsername").val().trim();
+        var password = $("#createPassword").val().trim();
+        var email = $("#createEmail").val().trim();
+
         var newUser = {
-            username: $("#createUsername").val().trim(),
-            password: $("#createPassword").val().trim(),
-            email: $("#createEmail").val().trim()
+            username,
+            password,
+            email
         };
 
-        if ($("#createEmail").val().length > 0 && $("#createUsername").val().length > 0 && $("#createPassword").val().length > 0) {
+        if (email.length > 0 && username.length > 0 && password.length > 0) {
             $.ajax({
                 type:"POST",
                 url:"http://localhost:3000/new-user",
@@ -42,7 +47,6 @@ $(document).ready(function(){
             }); 
         }
     });
-
 
 
     $(document).on("click", "#addToWishlistButton",function(){
