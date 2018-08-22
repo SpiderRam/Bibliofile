@@ -7,7 +7,7 @@ module.exports = function(sequelize, DataTypes) {
             allowNull: true
         },
         ISBN_13: {
-            type: DataTypes.INTEGER (13),
+            type: DataTypes.INTEGER ,
             allowNull: true
         },
         Title: {

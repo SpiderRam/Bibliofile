@@ -1,6 +1,7 @@
 
 $(document).ready(function(){
-
+ var bookToSave ={};
+ var isbn = {};
     console.log("connected");
 
     $("#searchSubmit").on("click", function(){
@@ -17,7 +18,7 @@ $(document).ready(function(){
                 console.log("bookData",cleanData);
             });
         } else if($("#isbnInput").val().length > 0){
-            var isbn = $("#isbnInput").val();
+            isbn = $("#isbnInput").val();
             console.log($("#isbnInput").val());
               console.log("search isbn");
             //   $("#isbn").on("click", function(){
@@ -34,6 +35,7 @@ $(document).ready(function(){
                     // });
                     $("#book-title").text(response.title);
                     console.log(response);
+                    bookToSave = response;
                 });
             // });
         };
@@ -44,4 +46,26 @@ $(document).ready(function(){
 //     });
     
 });
+$(document).on("click", "#addToWishlistButton",function(){
+    console.log("wish list button clicked", bookToSave);
+    var cleanBook = {
+        ISBN_10:parseInt(isbn),
+        ISBN_13:parseInt(isbn),     
+        Title: bookToSave.title,
+        Author:bookToSave.authors[0],
+        Series: "",
+        Format: bookToSave.printType,
+        Max_Price: parseFloat($("#wishListPrice").val()),
+    
+    }
+    console.log(cleanBook, "clean book");
+
+    $.ajax({
+        type:"POST",
+        url:"http://localhost:3000/wishlist",
+        data:cleanBook
+    }).then(function(response){
+
+    })
+})
 });
