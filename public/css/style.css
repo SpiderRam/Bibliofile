@@ -7,15 +7,14 @@ body {
 	display: block;
 	width: 500px;
 	height: 250px;
+	padding-top: 10px;
 }
 
 #dropdown {
 	float: right;
-
 }
 
 #addToForSale {
-
     width: 1000px;
     height: 70px;
 }
@@ -28,7 +27,6 @@ body {
 #addToWishlist {
     width: 1000px;
     height: 70px;
-
 }
 
 #addToWishlistButton {
@@ -37,7 +35,6 @@ body {
 }
 
 #main {
-	
 	margin: 30px 10% 80px 10%;
 	background-image: url("../images/parchment.jpg");
 	border-radius: 15px;
@@ -217,6 +214,8 @@ a.nav-link.active.show {
 	margin-left: 3%;
 }
 
+/* start search results styling */
+
 #searchResults {
 	margin: 30px 10% 80px 10%;
 	background-image: url("../images/parchment.jpg");
@@ -244,5 +243,27 @@ a.nav-link.active.show {
 .btn-outline-secondary:hover {
 	background-color: transparent;
 	color: darkred;
+	border: 1px solid black;
+}
+
+/* Icons for nav bar in library.html, for-sale.html, and wishlist.html were sourced and licensed from:
+				License: https://creativecommons.org/licenses/by/3.0/legalcode
+				https://www.iconfinder.com/Chanut-is
+				https://www.iconfinder.com/Oppossume
+				https://www.iconfinder.com/bogdanrosu
+				https://www.iconfinder.com/iconofoxy 
+*/
+
+.headerText {
+	margin-right: 10px;
+	display: inline-block;
+}
+
+.navIcons {
+	float: right;
+}
+
+.navIcon:hover {
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 	border: 1px solid black;
 }
