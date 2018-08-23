@@ -96,6 +96,8 @@ $(document).ready(function(){
             data: cleanBook
         }).then(function(response){
             console.log(response);
+            document.getElementById("success").style.display="block";
+            document.getElementById("searchResults").style.display="none";
         }); 
     });
 

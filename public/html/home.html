@@ -121,10 +121,10 @@
 			<div class="card-body">
 				<h2 class="card-title">What would you like to do next?</h2>
 				<div class="afterSearchNavIcons">
-						<a href="#selectNextAction"><img src="../images/icon-book-search.png" class="navIcon">Search again</a>
-						<a href="library.html"><img src="../images/icon-library.png" class="navIcon">View library</a>
-						<a href="for-sale.html"><img src="../images/icon-for-sale.png" class="navIcon">View items for sale</a>
-						<a href="wishlist.html"><img src="../images/icon-wishlist.png" class="navIcon">View wishlist</a>
+						<span id="searchAgain"><img src="../images/icon-book-search.png" class="navIcon">Search again</span>
+						<a href="library.html" id="goToLibrary"><img src="../images/icon-library.png" class="navIcon">View library</a>
+						<a href="for-sale.html" id="goToForSale"><img src="../images/icon-for-sale.png" class="navIcon">View items for sale</a>
+						<a href="wishlist.html" id="goToWishlist"><img src="../images/icon-wishlist.png" class="navIcon">View wishlist</a>
 				</div>
 			</div>
 		</div>	
@@ -177,13 +177,18 @@ function displayResults() {
 	showResults();
 };
 
+function searchAgain() {
+	document.getElementById("success").style.display="none";
+	showActions();
+}
+
 $("#signUp").on("click", hideMain);
 
 $("#signIn").on("click", hideMain);
 
 $("#searchSubmit").on("click", displayResults);
 
-
+$("#searchAgain").on("click", searchAgain);
 
 var returningUserEmail = $("#enterEmail").val().trim();
 var returningUserPassword = $("#enterPassword").val().trim();

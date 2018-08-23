@@ -3,7 +3,7 @@ module.exports = function(sequelize, DataTypes) {
     const Library = sequelize.define('Library', {
         
         ISBN: {
-            type: DataTypes.INTEGER (13),
+            type: DataTypes.STRING,
             allowNull: true
         },
         Title: {

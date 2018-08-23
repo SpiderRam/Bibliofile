@@ -262,6 +262,11 @@ a.nav-link.active.show {
 	margin-right: 5%;
 }
 
+#searchAgain {
+	color: black;
+	margin-right: 5%;
+}
+
 /* Icons for nav bar in home.html (#success), library.html, for-sale.html, and wishlist.html were sourced and licensed from:
 				License: https://creativecommons.org/licenses/by/3.0/legalcode
 				https://www.iconfinder.com/Chanut-is

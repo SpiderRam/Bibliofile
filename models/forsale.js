@@ -3,7 +3,7 @@ module.exports = function(sequelize, DataTypes) {
     const forsale = sequelize.define('forsale', {
         
         ISBN: {
-            type: DataTypes.INTEGER (13),
+            type: DataTypes.STRING,
             allowNull: true
         },
         Title: {
