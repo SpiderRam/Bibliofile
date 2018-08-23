@@ -28,6 +28,8 @@ $(document).ready(function(){
             }); 
         } else {
             alert("Please fill in all fields.");
+            document.getElementById("main").style.display="block";
+            document.getElementById("selectNextAction").style.display="none";
         }
     });
 
@@ -52,6 +54,8 @@ $(document).ready(function(){
             }); 
         } else {
             alert("Please fill in all fields");
+            document.getElementById("main").style.display="block";
+            document.getElementById("selectNextAction").style.display="none";
         }
     });
 
@@ -71,6 +75,8 @@ $(document).ready(function(){
                 });
         } else {
             alert("Please put in only a 10 or 13 digit ISBN");
+            document.getElementById("selectNextAction").style.display="block";
+            document.getElementById("searchResults").style.display="none";
         }
     });
    
@@ -94,43 +100,53 @@ $(document).ready(function(){
     });
 
     $("#addToWishlistButton").on("click", function() {
-        event.preventDefault();
-        console.log("addToWishlistButton clicked");
-        var wishlistBook = {            
-            ISBN: parseInt(isbn),     
-            Title: bookToSave.title,
-            Author:bookToSave.authors[0],
-            Max_Price: parseFloat($("#wishListPrice").val()),
-            UserId: "1"
-        };
-        
-        $.ajax({
-            type:"POST",
-            url:"http://localhost:3000/wishlist",
-            data: wishlistBook
-        }).then(function(response){
-            console.log(response);
-        }); 
+
+        if ($("#wishListPrice").val().length > 0) {
+            event.preventDefault();
+            console.log("addToWishlistButton clicked");
+            var wishlistBook = {            
+                ISBN: parseInt(isbn),     
+                Title: bookToSave.title,
+                Author:bookToSave.authors[0],
+                Max_Price: parseFloat($("#wishListPrice").val()),
+                UserId: "1"
+            };
+            
+            $.ajax({
+                type:"POST",
+                url:"http://localhost:3000/wishlist",
+                data: wishlistBook
+            }).then(function(response){
+                console.log(response);
+            }); 
+        } else {
+            alert ("Please set your max price.");
+        }
     });
 
     $("#addToForSaleButton").on("click", function() {
-        event.preventDefault();
-        console.log("addToForSaleButton clicked");
-        var forSaleBook = {            
-            ISBN: parseInt(isbn),     
-            Title: bookToSave.title,
-            Author: bookToSave.authors[0],
-            Min_Price: parseFloat($("#forSalePrice").val()),
-            UserId: "1"
-        };
-        
-        $.ajax({
-            type:"POST",
-            url:"http://localhost:3000/for-sale",
-            data: forSaleBook
-        }).then(function(response){
-            console.log(response);
-        }); 
+
+        if ($("#forSalePrice").val().length > 0) {
+            event.preventDefault();
+            console.log("addToForSaleButton clicked");
+            var forSaleBook = {            
+                ISBN: parseInt(isbn),     
+                Title: bookToSave.title,
+                Author: bookToSave.authors[0],
+                Min_Price: parseFloat($("#forSalePrice").val()),
+                UserId: "1"
+            };
+            
+            $.ajax({
+                type:"POST",
+                url:"http://localhost:3000/for-sale",
+                data: forSaleBook
+            }).then(function(response){
+                console.log(response);
+            }); 
+        } else  {
+            alert ("Please set your min price.");
+        }
     });
     
     
