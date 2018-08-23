@@ -45,8 +45,34 @@ $(document).ready(function(){
             }).then(function(response){
                 console.log(response);
             }); 
+        } else {
+            alert("Please fill in all fields.");
         }
     });
+
+    $("#signIn").on("click", function() {
+        event.preventDefault();
+
+        var password = $("#enterPassword").val().trim();
+        var email = $("#enterEmail").val().trim();
+
+        var returningUser = {
+            password,
+            email
+        };
+
+        if (email.length > 0 && password.length > 0) {
+            $.ajax({
+                type:"POST",
+                url:"http://localhost:3000/returning-user",
+                data: returningUser
+            }).then(function(response){
+                console.log(response);
+            }); 
+        } else {
+            alert("Please fill in all fields");
+        }
+    });    
 
 
     $(document).on("click", "#addToWishlistButton",function(){

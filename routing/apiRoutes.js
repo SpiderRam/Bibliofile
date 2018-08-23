@@ -6,7 +6,23 @@ module.exports = function(app){
 
     app.post("/new-user", function(req, res) {
         console.log("Request: " + JSON.stringify(req.body));
-        res.send("Sup homie");
+        db.Users.create(
+            req.body
+        ).then(function(data){
+            res.json(data);
+        });
+    });
+
+    app.post("/returning-user", function(req, res) {
+        console.log("Request: " + JSON.stringify(req.body));
+        db.Users.findAll({
+            where: {
+                email: req.body.email,
+                password: req.body.password
+            }
+        }).then(function(data){
+            res.json(data);
+        });
     });
 
     app.post("/library", function(req, res){
