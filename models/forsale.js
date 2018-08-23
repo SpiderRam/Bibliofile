@@ -1,13 +1,13 @@
 module.exports = function(sequelize, DataTypes) {
 
-    const ForSale = sequelize.define('ForSale', {
+    const forsale = sequelize.define('forsale', {
         
         ISBN_10: {
             type: DataTypes.INTEGER,
             allowNull: true
         },
         ISBN_13: {
-            type: DataTypes.INTEGER (13),
+            type: DataTypes.INTEGER,
             allowNull: true
         },
         Title: {
@@ -39,8 +39,8 @@ module.exports = function(sequelize, DataTypes) {
        } 
     );
 
-    ForSale.associate = function(models) {
-        ForSale.belongsTo(models.Users, {
+    forsale.associate = function(models) {
+        forsale.belongsTo(models.Users, {
             foreignKey: 
                 {
                     allowNull: false
@@ -48,6 +48,6 @@ module.exports = function(sequelize, DataTypes) {
         });
     };
 
-    return ForSale;
+    return forsale;
 };
   
