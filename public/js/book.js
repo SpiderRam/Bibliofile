@@ -2,6 +2,7 @@
 $(document).ready(function(){
     var bookToSave ={};
     var isbn = {};
+    var userID = 0;
 
     console.log("connected");
 
@@ -24,6 +25,7 @@ $(document).ready(function(){
                 url:"http://localhost:3000/new-user",
                 data: newUser
             }).then(function(response){
+                userID = response.id;
                 console.log(response);
             }); 
         } else {
@@ -50,7 +52,8 @@ $(document).ready(function(){
                 url:"http://localhost:3000/returning-user",
                 data: returningUser
             }).then(function(response){
-                console.log(response);
+                userID = response.id;
+                console.log("RESPONSE ID: ", userID);
             }); 
         } else {
             alert("Please fill in all fields");
@@ -64,15 +67,15 @@ $(document).ready(function(){
         if($("#isbnInput").val().length == 10 || $("#isbnInput").val().length == 13){
             isbn = $("#isbnInput").val();
             console.log("search isbn: " + isbn);
-                $.ajax({
-                    type:"GET",
-                    url:"http://localhost:3000/books/" + isbn
-                }).then(function(response){
-                    $("#book-title").text("✒︎ Title: " + response.title);
-                    $("#book-author").text("✒︎ Author: " + response.authors[0]);
-                    console.log(response);
-                    bookToSave = response;
-                });
+            $.ajax({
+                type:"GET",
+                url:"http://localhost:3000/books/" + isbn
+            }).then(function(response){
+                $("#book-title").text("✒︎ Title: " + response.title);
+                $("#book-author").text("✒︎ Author: " + response.authors[0]);
+                console.log(response);
+                bookToSave = response;
+            });
         } else {
             alert("Please put in only a 10 or 13 digit ISBN");
             document.getElementById("selectNextAction").style.display="block";
@@ -83,11 +86,12 @@ $(document).ready(function(){
     $("#addToLibraryButton").on("click", function() {
         event.preventDefault();
         console.log("addToLibraryButton clicked");
+        
         var cleanBook = {            
             ISBN:parseInt(isbn),     
             Title: bookToSave.title,
             Author:bookToSave.authors[0],
-            UserId: "1"
+            UserId: userID
         };
         
         $.ajax({
@@ -111,7 +115,7 @@ $(document).ready(function(){
                 Title: bookToSave.title,
                 Author:bookToSave.authors[0],
                 Max_Price: parseFloat($("#wishListPrice").val()),
-                UserId: "1"
+                UserId: userID
             };
             
             $.ajax({
@@ -138,7 +142,7 @@ $(document).ready(function(){
                 Title: bookToSave.title,
                 Author: bookToSave.authors[0],
                 Min_Price: parseFloat($("#forSalePrice").val()),
-                UserId: "1"
+                UserId: userID
             };
             
             $.ajax({
@@ -146,13 +150,27 @@ $(document).ready(function(){
                 url:"http://localhost:3000/for-sale",
                 data: forSaleBook
             }).then(function(response){
-                console.log(response);
+                
                 document.getElementById("success").style.display="block";
                 document.getElementById("searchResults").style.display="none";
             }); 
         } else  {
             alert ("Please set your min price.");
         }
+    });
+
+    $(document).ready(function(){
+        console.log("WINDOW LOADED !!!!!");
+
+     
+            $.ajax({
+                type: "GET",
+                url: "/library/" + userID
+            }).then(function(response){
+                $("#libraryContents").append("<li>TEST</li>");
+    
+            });
+        
     });
     
     

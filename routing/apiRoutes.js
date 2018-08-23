@@ -21,6 +21,7 @@ module.exports = function(app){
                 password: req.body.password
             }
         }).then(function(data){
+            console.log("IS ID HERE: ", data)
             res.json(data);
         });
     });
@@ -44,6 +45,7 @@ module.exports = function(app){
             Author: req.body.Author,
             UserId: req.body.UserId
         }).then(function(data){
+            console.log("ADD TO LIBRRAY DATA: ",data);
             res.json(data);
         });
     });
@@ -62,6 +64,18 @@ module.exports = function(app){
         // grab the data ad req.body. whatever
         // req.body.value
         db.forsale.create(req.body).then(function(data){
+            res.json(data);
+        });
+    });
+
+    app.get("/library/:user_id", function(req, res) {
+        var userID = req.params.user_id;
+        console.log("USER ID ON LIBERARY!!: ", userID) 
+        db.Library.findAll({
+            where: {
+                UserId: userID
+            }
+        }).then(function(data){
             res.json(data);
         });
     });
