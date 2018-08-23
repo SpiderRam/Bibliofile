@@ -116,4 +116,28 @@ $(document).ready(function(){
         });
     });
 
+    })
+})
+$(document).on("click", "#addToForSaleButton",function(){
+    console.log("book for sale button clicked", bookToSave);
+    var cleanBook = {
+        ISBN_10:parseInt(isbn),
+        ISBN_13:parseInt(isbn),     
+        Title: bookToSave.title,
+        Author:bookToSave.authors[0],
+        Series: "",
+        Format: bookToSave.printType,
+        Min_Price: parseFloat($("#forSalePrice").val()),
+    
+    }
+    console.log(cleanBook, "clean book");
+
+    $.ajax({
+        type:"POST",
+        url:"http://localhost:3000/for-sale",
+        data:cleanBook
+    }).then(function(response){
+
+    })
+})
 });

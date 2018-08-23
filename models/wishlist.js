@@ -7,7 +7,7 @@ module.exports = function(sequelize, DataTypes) {
             allowNull: true
         },
         ISBN_13: {
-            type: DataTypes.INTEGER (13),
+            type: DataTypes.INTEGER,
             allowNull: true
         },
         Title: {
@@ -27,7 +27,7 @@ module.exports = function(sequelize, DataTypes) {
             allowNull: true
         },
         Max_Price: {
-            type: DataTypes.DECIMAL (10,2),
+            type: DataTypes.DECIMAL (10, 2),
             allowNull: false
         },
         Notes: {
@@ -47,7 +47,7 @@ module.exports = function(sequelize, DataTypes) {
                 }
         });
     };
-    
+
     return Wishlist;
 };
   
