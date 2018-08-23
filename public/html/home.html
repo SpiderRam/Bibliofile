@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Bibilofile Home</title>
+	<title>Bibliofile Home</title>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css"/>	
@@ -16,7 +16,18 @@
 	
 	<div id="main" style="display: block">
 		<div class="container mt-3">
-			<p id="welcome">✒︎Welcome</p>
+			<p id="welcome">✒︎Welcome </p>
+			<class id="dropdown">
+				<a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+				  Dropdown link
+				</a>
+			  
+				<div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+				  <a class="dropdown-item" href="#">For Sale</a>
+				  <a class="dropdown-item" href="#">Wish List</a>
+				  <a class="dropdown-item" href="#">Library</a>
+				</div>
+			  </div>
 			<br>
 			<!-- Nav tabs -->
 			<ul class="nav nav-tabs">
@@ -77,37 +88,28 @@
 		<div class="card-header">
 			✒︎ Welcome, reader!
 		</div>
-		<h4>Enter information into one field only, and search.</h4>
+		<h4>Enter your ten or thirteen digit ISBN, no dashes needed.</h4>
 		<form>
 			<div class="form-group">
 				<label for="isbnInput">Search by ISBN:</label>
 				<input type="text" class="form-control" id="isbnInput" placeholder="ISBN-10 or ISBN-13">
 			</div>
-			<div class="form-group">
-				<label for="titleInput">Search by Title:</label>
-				<input type="text" class="form-control" id="titleInput" placeholder="Spelling matters....">
-			</div>
-			<div class="form-group">
-				<label for="authorInput">Search by Author:</label>
-				<input type="text" class="form-control" id="authorInput" placeholder="Spelling matters....">
-			</div>
-			<div class="form-group">
-				<label for="seriesInput">Search by Series:</label>
-				<input type="text" class="form-control" id="seriesInput" placeholder="Spelling matters....">
-			</div>
+			
 		</form>
 		<button id="searchSubmit" class="btn btn-primary">Search</button>
 		
 	</div>
 
+	
 	<div class="card" id="searchResults" style="display: none">
 		<div class="card-header">
 			✒︎ Results:
 		</div>
 		<div class="card-body">
-			<h4 class="card-title">Select your book from the results, and then add it to the list of your choice.</h4>
+			<h2 class="card-title">Shelve your book:  choose one of the three options below.  Don't forget to set your price.</h2>
 			<div id="book-result">
-				<h2 id="book-title"></h2>
+				<h4 id="book-title"></h4>
+				<h4 id="book-author"></h4>
 			</div>
 			<div id="addToForSale" class="input-group mb-3">
 				<input type="text" id = "forSalePrice" class="form-control" placeholder="Set minimum price">
@@ -126,7 +128,7 @@
 	</div>
 	
 	
-	
+	<img src="Instructions-01.jpg"alt="instructions">	
 	
 
 </body>
