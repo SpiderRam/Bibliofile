@@ -246,12 +246,29 @@ a.nav-link.active.show {
 	border: 1px solid black;
 }
 
-/* Icons for nav bar in library.html, for-sale.html, and wishlist.html were sourced and licensed from:
+/* start success styling */
+
+#success {
+	margin: 30px 10% 80px 10%;
+	background-image: url("../images/parchment.jpg");
+	border-radius: 15px;
+	border: 1px darkred solid;
+	font-family: 'IM Fell English SC', serif;
+	padding-bottom: 20px;
+}
+
+.afterSearchNavIcons a {
+	color: black;
+	margin-right: 5%;
+}
+
+/* Icons for nav bar in home.html (#success), library.html, for-sale.html, and wishlist.html were sourced and licensed from:
 				License: https://creativecommons.org/licenses/by/3.0/legalcode
 				https://www.iconfinder.com/Chanut-is
 				https://www.iconfinder.com/Oppossume
 				https://www.iconfinder.com/bogdanrosu
 				https://www.iconfinder.com/iconofoxy 
+				http://www.picol.org/
 */
 
 .headerText {
