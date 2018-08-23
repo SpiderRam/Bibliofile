@@ -25,12 +25,11 @@ module.exports = function(app){
         });
     });
 
-    app.post("/library", function(req, res){
-        // grab the data ad req.body. whatever
-        // req.body.value
+    app.post("/add-to-library", function(req, res){
         db.Library.create({
-            title:"my first book"
-
+            ISBN: req.body.ISBN,
+            Title: req.body.Title,
+            Author: req.body.Author
         }).then(function(data){
             res.json(data);
         });

@@ -72,7 +72,27 @@ $(document).ready(function(){
         } else {
             alert("Please fill in all fields");
         }
-    });    
+    });  
+    
+    $("#addToLibraryButton").on("click", function() {
+        event.preventDefault();
+        console.log("addToLibraryButton clicked");
+        var cleanBook = {            
+            ISBN:parseInt(isbn),     
+            Title: bookToSave.title,
+            Author:bookToSave.authors[0],
+            UserId: "1"
+        };
+
+        $.ajax({
+            type:"POST",
+                url:"http://localhost:3000/add-to-library",
+                data: cleanBook
+            }).then(function(response){
+                console.log(response);
+            }); 
+    });
+
 
 
     $(document).on("click", "#addToWishlistButton",function(){
