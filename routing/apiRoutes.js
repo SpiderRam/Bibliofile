@@ -21,12 +21,10 @@ module.exports = function(app){
     });
 
     app.post("/for-sale", function(req, res){
+        console.log("book we are about to save", req.body);
         // grab the data ad req.body. whatever
         // req.body.value
-        db.ForSale.create({
-            title:"my first book"
-
-        }).then(function(data){
+        db.forsale.create(req.body).then(function(data){
             res.json(data);
         });
     });
