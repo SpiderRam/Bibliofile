@@ -120,6 +120,8 @@ $(document).ready(function(){
                 data: wishlistBook
             }).then(function(response){
                 console.log(response);
+                document.getElementById("success").style.display="block";
+                document.getElementById("searchResults").style.display="none";
             }); 
         } else {
             alert ("Please set your max price.");
@@ -145,6 +147,8 @@ $(document).ready(function(){
                 data: forSaleBook
             }).then(function(response){
                 console.log(response);
+                document.getElementById("success").style.display="block";
+                document.getElementById("searchResults").style.display="none";
             }); 
         } else  {
             alert ("Please set your min price.");
