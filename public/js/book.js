@@ -1,11 +1,17 @@
+var userID;
 
 $(document).ready(function(){
     var bookToSave ={};
     var isbn = {};
-    var userID = 0;
 
     console.log("connected");
-
+    if(sessionStorage.userID) {
+        $('#main').hide();
+        $("#selectNextAction").show(600);
+    } else {
+        $("#main").show(600);
+        $("#selectNextAction").hide();
+    }
     $("#signUp").on("click", function() {
         event.preventDefault();
 
@@ -26,7 +32,7 @@ $(document).ready(function(){
                 data: newUser
             }).then(function(response){
                 userID = response.id;
-                console.log(response);
+                console.log("=====================NEW USER ID LINE 29: ", userID);
             }); 
         } else {
             alert("Please fill in all fields.");
@@ -52,8 +58,9 @@ $(document).ready(function(){
                 url:"http://localhost:3000/returning-user",
                 data: returningUser
             }).then(function(response){
-                userID = response.id;
-                console.log("RESPONSE ID: ", userID);
+                sessionStorage.userID = response.id;
+                console.log("====================RETURNING USER ID LINE 56: ", sessionStorage.userID);
+
             }); 
         } else {
             alert("Please fill in all fields");
@@ -73,7 +80,6 @@ $(document).ready(function(){
             }).then(function(response){
                 $("#book-title").text("✒︎ Title: " + response.title);
                 $("#book-author").text("✒︎ Author: " + response.authors[0]);
-                console.log(response);
                 bookToSave = response;
             });
         } else {
@@ -91,7 +97,7 @@ $(document).ready(function(){
             ISBN:parseInt(isbn),     
             Title: bookToSave.title,
             Author:bookToSave.authors[0],
-            UserId: userID
+            UserId: sessionStorage.userID
         };
         
         $.ajax({
@@ -99,7 +105,6 @@ $(document).ready(function(){
             url:"http://localhost:3000/add-to-library",
             data: cleanBook
         }).then(function(response){
-            console.log(response);
             document.getElementById("success").style.display="block";
             document.getElementById("searchResults").style.display="none";
         }); 
@@ -158,20 +163,4 @@ $(document).ready(function(){
             alert ("Please set your min price.");
         }
     });
-
-    $(document).ready(function(){
-        console.log("WINDOW LOADED !!!!!");
-
-     
-            $.ajax({
-                type: "GET",
-                url: "/library/" + userID
-            }).then(function(response){
-                $("#libraryContents").append("<li>TEST</li>");
-    
-            });
-        
-    });
-    
-    
 });

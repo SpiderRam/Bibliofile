@@ -70,13 +70,14 @@ module.exports = function(app){
 
     app.get("/library/:user_id", function(req, res) {
         var userID = req.params.user_id;
-        console.log("USER ID ON LIBERARY!!: ", userID) 
+        console.log("USER ID ON LIBRARY!!: ", userID); 
         db.Library.findAll({
             where: {
                 UserId: userID
             }
         }).then(function(data){
             res.json(data);
+            console.log("===================== Data Values: ", data);
         });
     });
     

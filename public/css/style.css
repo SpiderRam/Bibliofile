@@ -289,3 +289,24 @@ a.nav-link.active.show {
 	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 	border: 1px solid black;
 }
+
+/* start list item styling */
+
+li {
+	margin-top: 10px;
+	font-family: 'Cormorant', serif;
+	font-size: 20px;
+	color: black;
+}
+
+.libraryDelete {
+	margin-right: 10px;
+}
+
+.underline {
+	text-decoration: underline;
+}
+
+.bold {
+	font-weight: bold;
+}
