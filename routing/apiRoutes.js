@@ -93,6 +93,19 @@ module.exports = function(app){
             
         });
     });
+
+    app.get("/for-sale/:user_id", function(req, res) {
+        var userID = req.params.user_id;
+        console.log("USER ID ON FOR-SALE!!: ", userID); 
+        db.forsale.findAll({
+            where: {
+                UserId: userID
+            }
+        }).then(function(data){
+            res.json(data);
+            
+        });
+    });
     
 };
 

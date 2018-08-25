@@ -5,8 +5,7 @@ $(document).ready(function(){
         url: "/wishlist/" + userID
     }).then(function(response){
         console.log("----------------Get User books here: " + JSON.stringify(response));
-        console.log("=====================USER ID LOGGED ON LINE 170: ", userID);
-
+        
         for (i = 0; i < response.length; i++) {
             var book = response[i];
         

@@ -132,7 +132,7 @@ $(document).ready(function(){
                 url:"http://localhost:3000/wishlist",
                 data: wishlistBook
             }).then(function(response){
-                console.log(response);
+                console.log(JSON.stringify(response));
                 document.getElementById("success").style.display="block";
                 document.getElementById("searchResults").style.display="none";
             }); 
@@ -159,7 +159,7 @@ $(document).ready(function(){
                 url:"http://localhost:3000/for-sale",
                 data: forSaleBook
             }).then(function(response){
-                
+                console.log(JSON.stringify(response));
                 document.getElementById("success").style.display="block";
                 document.getElementById("searchResults").style.display="none";
             }); 
