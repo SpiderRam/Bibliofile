@@ -128,17 +128,18 @@ module.exports = function(app){
       
     });
 
-    // app.put("/wishlist-update/:bookId", function(req, res) {
-    //     db.Wishlist.update({
-    //         Max_Price: req.body.text
-    //     }, {
-    //         where: {
-    //             id: req.params.bookId
-    //         }
-    //     }).then(function(data) {
-    //         res.json(data);
-    //     });
-    // });
+    app.put("/wishlist-update/:bookId", function(req, res) {
+        console.log(req.body);
+        db.Wishlist.update({
+            Max_Price: req.body.price
+        }, {
+            where: {
+                id: req.params.bookId
+            }
+        }).then(function(data) {
+            res.json(data);
+        });
+    });
     
 };
 
