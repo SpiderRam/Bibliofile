@@ -21,7 +21,6 @@ module.exports = function(app){
                 password: req.body.password
             }
         }).then(function(data){
-            console.log("IS ID HERE: ", data)
             res.json(data);
         });
     });
@@ -32,7 +31,6 @@ module.exports = function(app){
             if (err) {
                 console.log('Book not found', err);
             } else {
-                console.log('Book found', book);
                 res.json(book);
             }
         });
@@ -45,24 +43,18 @@ module.exports = function(app){
             Author: req.body.Author,
             UserId: req.body.UserId
         }).then(function(data){
-            console.log("ADD TO LIBRARY DATA: ",data);
             res.json(data);
         });
     });
 
     
     app.post("/wishlist", function(req, res){
-        console.log("book we are about to save", req.body);
-        // req.body.value
         db.Wishlist.create(req.body).then(function(data){
             res.json(data);
         });
     });
     
     app.post("/for-sale", function(req, res){
-        console.log("book we are about to save", req.body);
-        // grab the data ad req.body. whatever
-        // req.body.value
         db.forsale.create(req.body).then(function(data){
             res.json(data);
         });
@@ -70,7 +62,6 @@ module.exports = function(app){
 
     app.get("/library/:user_id", function(req, res) {
         var userID = req.params.user_id;
-        console.log("USER ID ON LIBRARY!!: ", userID); 
         db.Library.findAll({
             where: {
                 UserId: userID
@@ -83,7 +74,6 @@ module.exports = function(app){
 
     app.get("/wishlist/:user_id", function(req, res) {
         var userID = req.params.user_id;
-        console.log("USER ID ON WISHLIST!!: ", userID); 
         db.Wishlist.findAll({
             where: {
                 UserId: userID
@@ -96,14 +86,12 @@ module.exports = function(app){
 
     app.get("/for-sale/:user_id", function(req, res) {
         var userID = req.params.user_id;
-        console.log("USER ID ON FOR-SALE!!: ", userID); 
         db.forsale.findAll({
             where: {
                 UserId: userID
             }
         }).then(function(data){
             res.json(data);
-            
         });
     });
     

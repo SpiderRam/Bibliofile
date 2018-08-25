@@ -63,7 +63,6 @@ $(document).ready(function(){
             }).then(function(response){
                 usernameText = response.username;
                 sessionStorage.userID = response.id;
-                console.log("====================RETURNING USER ID LINE 56: ", sessionStorage.userID);
                 $("#insertUsername").text(", " + usernameText);
             }); 
         } else {
@@ -95,7 +94,6 @@ $(document).ready(function(){
    
     $("#addToLibraryButton").on("click", function() {
         event.preventDefault();
-        console.log("addToLibraryButton clicked");
         
         var cleanBook = {            
             ISBN:parseInt(isbn),     
@@ -118,7 +116,7 @@ $(document).ready(function(){
 
         if ($("#wishListPrice").val().length > 0) {
             event.preventDefault();
-            console.log("addToWishlistButton clicked");
+            
             var wishlistBook = {            
                 ISBN: parseInt(isbn),     
                 Title: bookToSave.title,
@@ -132,7 +130,6 @@ $(document).ready(function(){
                 url:"http://localhost:3000/wishlist",
                 data: wishlistBook
             }).then(function(response){
-                console.log(JSON.stringify(response));
                 document.getElementById("success").style.display="block";
                 document.getElementById("searchResults").style.display="none";
             }); 
@@ -145,7 +142,7 @@ $(document).ready(function(){
 
         if ($("#forSalePrice").val().length > 0) {
             event.preventDefault();
-            console.log("addToForSaleButton clicked");
+            
             var forSaleBook = {            
                 ISBN: parseInt(isbn),     
                 Title: bookToSave.title,
@@ -159,7 +156,6 @@ $(document).ready(function(){
                 url:"http://localhost:3000/for-sale",
                 data: forSaleBook
             }).then(function(response){
-                console.log(JSON.stringify(response));
                 document.getElementById("success").style.display="block";
                 document.getElementById("searchResults").style.display="none";
             }); 

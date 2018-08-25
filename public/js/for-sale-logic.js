@@ -4,7 +4,6 @@ $(document).ready(function(){
         type: "GET",
         url: "/for-sale/" + userID
     }).then(function(response){
-        console.log("----------------Get User books here: " + JSON.stringify(response));
         
         for (i = 0; i < response.length; i++) {
             var book = response[i];
