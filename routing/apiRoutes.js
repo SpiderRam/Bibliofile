@@ -13,7 +13,7 @@ module.exports = function(app){
         });
     });
 
-    app.post("/returning-user/", function(req, res) {
+    app.post("/returning-user", function(req, res) {
         console.log("Request: " + JSON.stringify(req.body)); 
         db.Users.findOne({
             where: {
@@ -52,6 +52,7 @@ module.exports = function(app){
         db.Wishlist.create(req.body).then(function(data){
             res.json(data);
         });
+        
     });
     
     app.post("/for-sale", function(req, res){

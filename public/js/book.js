@@ -61,6 +61,7 @@ $(document).ready(function(){
                 url:"http://localhost:3000/returning-user",
                 data: returningUser
             }).then(function(response){
+                console.log(response);
                 usernameText = response.username;
                 sessionStorage.userID = response.id;
                 $("#insertUsername").text(", " + usernameText);
