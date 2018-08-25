@@ -35,7 +35,7 @@ $(document).ready(function(){
                 usernameText = response.username;
                 sessionStorage.userID = response.id;
                 console.log(JSON.stringify(response));
-                $("#insertUsername").text(", " + usernameText + "!");
+                $("#insertUsername").text(", " + usernameText);
             }); 
         } else {
             alert("Please fill in all fields.");
@@ -64,7 +64,7 @@ $(document).ready(function(){
                 usernameText = response.username;
                 sessionStorage.userID = response.id;
                 console.log("====================RETURNING USER ID LINE 56: ", sessionStorage.userID);
-                $("#insertUsername").text(usernameText);
+                $("#insertUsername").text(", " + usernameText);
             }); 
         } else {
             alert("Please fill in all fields");
