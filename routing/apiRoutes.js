@@ -105,8 +105,28 @@ module.exports = function(app){
         });
       
     });
+
+    app.delete("/wishlist-delete/:bookId", function( req, res) {
+        db.Wishlist.destroy({
+            where: {
+              id: req.params.bookId
+            }
+        }).then(function(data) {
+        res.json(data);
+        });
       
-    
+    });
+      
+    app.delete("/forSale-delete/:bookId", function( req, res) {
+        db.forsale.destroy({
+            where: {
+              id: req.params.bookId
+            }
+        }).then(function(data) {
+        res.json(data);
+        });
+      
+    });
     
 };
 
