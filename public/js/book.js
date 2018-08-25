@@ -1,4 +1,5 @@
 var userID;
+var usernameText;
 
 $(document).ready(function(){
     var bookToSave ={};
@@ -31,8 +32,10 @@ $(document).ready(function(){
                 url:"http://localhost:3000/new-user",
                 data: newUser
             }).then(function(response){
-                userID = response.id;
-                console.log("=====================NEW USER ID LINE 29: ", userID);
+                usernameText = response.username;
+                sessionStorage.userID = response.id;
+                console.log(JSON.stringify(response));
+                $("#insertUsername").text(usernameText);
             }); 
         } else {
             alert("Please fill in all fields.");
@@ -58,9 +61,10 @@ $(document).ready(function(){
                 url:"http://localhost:3000/returning-user",
                 data: returningUser
             }).then(function(response){
+                usernameText = response.username;
                 sessionStorage.userID = response.id;
                 console.log("====================RETURNING USER ID LINE 56: ", sessionStorage.userID);
-
+                $("#insertUsername").text(usernameText);
             }); 
         } else {
             alert("Please fill in all fields");
