@@ -35,7 +35,7 @@ $(document).ready(function(){
                 usernameText = response.username;
                 sessionStorage.userID = response.id;
                 console.log(JSON.stringify(response));
-                $("#insertUsername").text(usernameText);
+                $("#insertUsername").text(", " + usernameText + "!");
             }); 
         } else {
             alert("Please fill in all fields.");
@@ -124,7 +124,7 @@ $(document).ready(function(){
                 Title: bookToSave.title,
                 Author:bookToSave.authors[0],
                 Max_Price: parseFloat($("#wishListPrice").val()),
-                UserId: userID
+                UserId: sessionStorage.userID
             };
             
             $.ajax({
@@ -151,7 +151,7 @@ $(document).ready(function(){
                 Title: bookToSave.title,
                 Author: bookToSave.authors[0],
                 Min_Price: parseFloat($("#forSalePrice").val()),
-                UserId: userID
+                UserId: sessionStorage.userID
             };
             
             $.ajax({

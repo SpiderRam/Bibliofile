@@ -45,7 +45,7 @@ module.exports = function(app){
             Author: req.body.Author,
             UserId: req.body.UserId
         }).then(function(data){
-            console.log("ADD TO LIBRRAY DATA: ",data);
+            console.log("ADD TO LIBRARY DATA: ",data);
             res.json(data);
         });
     });
@@ -77,7 +77,20 @@ module.exports = function(app){
             }
         }).then(function(data){
             res.json(data);
-            console.log("===================== Data Values: ", data);
+            
+        });
+    });
+
+    app.get("/wishlist/:user_id", function(req, res) {
+        var userID = req.params.user_id;
+        console.log("USER ID ON WISHLIST!!: ", userID); 
+        db.Wishlist.findAll({
+            where: {
+                UserId: userID
+            }
+        }).then(function(data){
+            res.json(data);
+            
         });
     });
     

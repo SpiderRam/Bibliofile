@@ -299,7 +299,7 @@ li {
 	color: black;
 }
 
-.libraryDelete {
+.libraryDelete, .wishlistDelete, .maxPriceUpdate {
 	margin-right: 10px;
 }
 
