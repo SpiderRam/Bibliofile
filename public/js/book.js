@@ -71,7 +71,7 @@ $(document).ready(function(){
     });
 
     })
-})
+
 $(document).on("click", "#addToForSaleButton",function(){
     console.log("book for sale button clicked", bookToSave);
     var cleanBook = {
@@ -93,5 +93,5 @@ $(document).on("click", "#addToForSaleButton",function(){
     }).then(function(response){
 
     })
-})
 });
+
