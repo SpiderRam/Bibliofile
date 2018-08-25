@@ -94,6 +94,19 @@ module.exports = function(app){
             res.json(data);
         });
     });
+
+    app.delete("/library-delete/:bookId", function( req, res) {
+        db.Library.destroy({
+            where: {
+              id: req.params.bookId
+            }
+        }).then(function(data) {
+        res.json(data);
+        });
+      
+    });
+      
+    
     
 };
 
