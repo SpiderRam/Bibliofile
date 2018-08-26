@@ -38,7 +38,6 @@ const handleUpdateClick = function(book) {
     });
 };
 
-
 const generateWishlistContent = function() {
     var userID = sessionStorage.userID;
     $.ajax({
@@ -84,10 +83,10 @@ const generateWishlistContent = function() {
                 .attr("id", "editWishlistBook" + book.id);
                 
             const searchIcon = $("<img>")
-                .addClass("maxPriceUpdate")
+                .addClass("searchForContacts")
                 .attr("src", "../images/icon-request-info.png")
                 .attr("title", "Find Sellers")
-                .attr("id", "updatePriceOf" + book.id);  
+                .attr("id", "findSellersFor" + book.id);  
     
             deleteIcon.on("click", function() {
                 handleDeleteClick(book);
