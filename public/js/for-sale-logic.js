@@ -12,6 +12,43 @@ const handleDeleteClick = function (book) {
     });
 };
 
+const handleUpdateClick = function(book) {
+    event.preventDefault();
+    const changeMinPriceButton = $("#changeMinPriceButton");
+
+    console.log("Trying to update price on " + book.id);
+
+    $("#changeMinPrice").show();
+
+    changeMinPriceButton.off("click");
+
+    changeMinPriceButton.on("click", function() {
+        $.ajax({
+            type: "PUT",
+            url: "/forSale-update/" + book.id,
+            data: {
+                price: $("#newMinPrice").val()
+            }
+        }).then(function(response) {
+            generateForSaleContent();
+            console.log(JSON.stringify(response));
+            console.log("Updated price of  " + book.id + " in forsale");
+            $("#changeMinPrice").hide();
+        });
+    });
+};
+
+const handleSearchClick = function() {
+    event.preventDefault();
+    const searchForBuyers = $("findBuyersFor" + book.id);
+
+    //build an API in apiRoutes and make a get call to it to use sequelize to return results
+    //.then populate <li></li> elements and append them to #matchResults inside the modal
+    //.then call generateForSaleContent() again so that the page reloads
+    //This function is set to be called on click of searchIcon in the generateForSaleContent function
+     
+};
+
 const generateForSaleContent = function() {
     var userID = sessionStorage.userID;
     $.ajax({
@@ -58,16 +95,23 @@ const generateForSaleContent = function() {
             .attr("id", "editForSaleBook" + book.id);
             
             const searchIcon = $("<img>")
-            .addClass("minPriceUpdate")
+            .addClass("searchForContacts")
             .attr("src", "../images/icon-request-info.png")
             .attr("title", "Find Buyers")
-            .attr("id", "updatePriceOf" + book.id);  
+            .attr("id", "findBuyersFor" + book.id);  
             
             deleteIcon.on("click", function() {
                 handleDeleteClick(book);
             });
             
-            
+            editIcon.on("click", function() {
+                handleUpdateClick(book);
+            });
+
+            searchIcon.on("click", function() {
+                handleSearchClick();
+            });
+
             const titleSpan = $("<span>")
             .addClass("underline")
             .text(book.Title);

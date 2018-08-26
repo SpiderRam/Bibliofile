@@ -14,20 +14,27 @@ const handleDeleteClick = function (book) {
 
 const handleUpdateClick = function(book) {
     event.preventDefault();
+    const changeMaxPriceButton = $("#changeMaxPriceButton");
+
     console.log("Trying to update price on " + book.id);
 
     $("#changeMaxPrice").show();
 
-    $.ajax({
-        type: "PUT",
-        url: "/wishlist-update/" + book.id,
-        data: JSON.stringify({
-            price: $("#newMaxPrice").val()
-        })
-    }).then(function(response) {
-        generateWishlistContent();
-        console.log(JSON.stringify(response));
-        console.log("Updated price of  " + book.id + " in Wishlist");
+    changeMaxPriceButton.off("click");
+
+    changeMaxPriceButton.on("click", function() {
+        $.ajax({
+            type: "PUT",
+            url: "/wishlist-update/" + book.id,
+            data: {
+                price: $("#newMaxPrice").val()
+            }
+        }).then(function(response) {
+            generateWishlistContent();
+            console.log(JSON.stringify(response));
+            console.log("Updated price of  " + book.id + " in Wishlist");
+            $("#changeMaxPrice").hide();
+        });
     });
 };
 
@@ -76,10 +83,10 @@ const generateWishlistContent = function() {
                 .attr("id", "editWishlistBook" + book.id);
                 
             const searchIcon = $("<img>")
-                .addClass("maxPriceUpdate")
+                .addClass("searchForContacts")
                 .attr("src", "../images/icon-request-info.png")
                 .attr("title", "Find Sellers")
-                .attr("id", "updatePriceOf" + book.id);  
+                .attr("id", "findSellersFor" + book.id);  
     
             deleteIcon.on("click", function() {
                 handleDeleteClick(book);
@@ -99,32 +106,6 @@ const generateWishlistContent = function() {
     });
 };
 
-
 $(document).ready(function(){      
     generateWishlistContent();
 });
-
-
-// const priceChangeButton = $("<button>")
-            //     .addClass("btn btn-outline-secondary")
-            //     .attr("type", "button")
-            //     .attr("id", "changeMaxPriceButton")
-            //     .text("Update Max Price");
-            
-            // const priceChangeButtonDiv = $("<div>")
-            //     .addClass("input-group-append")
-            //     .attr("id", "buttondiv")
-            //     .append(priceChangeButton);
-            
-            // const priceChangeInputField = $("<input>")
-            // .attr("type", "text")
-            // .attr("id", "NewMaxPrice")
-            // .addClass("form-control")
-            // .attr("placeholder", "Enter new price")
-            // .append(priceChangeButtonDiv);
-            
-            // const priceChangeInputDiv = $("<div>")
-            //     .attr("id", "change " + book.Max_Price)
-            //     .addClass("input-group mb-3")
-            //     .attr("style", "display: none")
-            //     .append(priceChangeInputField);
