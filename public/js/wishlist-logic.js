@@ -107,32 +107,6 @@ const generateWishlistContent = function() {
     });
 };
 
-
 $(document).ready(function(){      
     generateWishlistContent();
 });
-
-
-// const priceChangeButton = $("<button>")
-            //     .addClass("btn btn-outline-secondary")
-            //     .attr("type", "button")
-            //     .attr("id", "changeMaxPriceButton")
-            //     .text("Update Max Price");
-            
-            // const priceChangeButtonDiv = $("<div>")
-            //     .addClass("input-group-append")
-            //     .attr("id", "buttondiv")
-            //     .append(priceChangeButton);
-            
-            // const priceChangeInputField = $("<input>")
-            // .attr("type", "text")
-            // .attr("id", "NewMaxPrice")
-            // .addClass("form-control")
-            // .attr("placeholder", "Enter new price")
-            // .append(priceChangeButtonDiv);
-            
-            // const priceChangeInputDiv = $("<div>")
-            //     .attr("id", "change " + book.Max_Price)
-            //     .addClass("input-group mb-3")
-            //     .attr("style", "display: none")
-            //     .append(priceChangeInputField);
