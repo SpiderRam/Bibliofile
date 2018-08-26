@@ -14,22 +14,30 @@ const handleDeleteClick = function (book) {
 
 const handleUpdateClick = function(book) {
     event.preventDefault();
+    const changeMaxPriceButton = $("#changeMaxPriceButton");
+
     console.log("Trying to update price on " + book.id);
 
     $("#changeMaxPrice").show();
 
-    $.ajax({
-        type: "PUT",
-        url: "/wishlist-update/" + book.id,
-        data: JSON.stringify({
-            price: $("#newMaxPrice").val()
-        })
-    }).then(function(response) {
-        generateWishlistContent();
-        console.log(JSON.stringify(response));
-        console.log("Updated price of  " + book.id + " in Wishlist");
+    changeMaxPriceButton.off("click");
+
+    changeMaxPriceButton.on("click", function() {
+        $.ajax({
+            type: "PUT",
+            url: "/wishlist-update/" + book.id,
+            data: {
+                price: $("#newMaxPrice").val()
+            }
+        }).then(function(response) {
+            generateWishlistContent();
+            console.log(JSON.stringify(response));
+            console.log("Updated price of  " + book.id + " in Wishlist");
+            $("#changeMaxPrice").hide();
+        });
     });
 };
+
 
 const generateWishlistContent = function() {
     var userID = sessionStorage.userID;

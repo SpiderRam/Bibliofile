@@ -12,6 +12,32 @@ const handleDeleteClick = function (book) {
     });
 };
 
+const handleUpdateClick = function(book) {
+    event.preventDefault();
+    const changeMinPriceButton = $("#changeMinPriceButton");
+
+    console.log("Trying to update price on " + book.id);
+
+    $("#changeMinPrice").show();
+
+    changeMinPriceButton.off("click");
+
+    changeMinPriceButton.on("click", function() {
+        $.ajax({
+            type: "PUT",
+            url: "/forSale-update/" + book.id,
+            data: {
+                price: $("#newMinPrice").val()
+            }
+        }).then(function(response) {
+            generateForSaleContent();
+            console.log(JSON.stringify(response));
+            console.log("Updated price of  " + book.id + " in forsale");
+            $("#changeMinPrice").hide();
+        });
+    });
+};
+
 const generateForSaleContent = function() {
     var userID = sessionStorage.userID;
     $.ajax({
@@ -67,7 +93,10 @@ const generateForSaleContent = function() {
                 handleDeleteClick(book);
             });
             
-            
+            editIcon.on("click", function() {
+                handleUpdateClick(book);
+            });
+
             const titleSpan = $("<span>")
             .addClass("underline")
             .text(book.Title);
