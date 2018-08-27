@@ -279,12 +279,12 @@ li {
 	color: black;
 }
 
-.libraryDelete, .wishlistDelete, .forSaleDelete, .maxPriceUpdate, .minPriceUpdate, .forSaleEdit, .wishlistEdit {
+.libraryDelete, .wishlistDelete, .forSaleDelete, .searchForContacts, .forSaleEdit, .wishlistEdit {
 	margin-right: 10px;
 	padding: 3px;
 }
 
-.libraryDelete:hover, .wishlistDelete:hover, .forSaleDelete:hover, .maxPriceUpdate:hover, .minPriceUpdate:hover, .forSaleEdit:hover, .wishlistEdit:hover {
+.libraryDelete:hover, .wishlistDelete:hover, .forSaleDelete:hover, .searchForContacts:hover, .forSaleEdit:hover, .wishlistEdit:hover {
 	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 	border: 1px solid darkred;
 }

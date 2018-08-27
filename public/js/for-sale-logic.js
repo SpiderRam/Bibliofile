@@ -38,15 +38,37 @@ const handleUpdateClick = function(book) {
     });
 };
 
-const handleSearchClick = function() {
+const handleSearchClick = function(book) {
     event.preventDefault();
-    const searchForBuyers = $("findBuyersFor" + book.id);
+    console.log("Line 43: " + book.id);
 
-    //build an API in apiRoutes and make a get call to it to use sequelize to return results
-    //.then populate <li></li> elements and append them to #matchResults inside the modal
-    //.then call generateForSaleContent() again so that the page reloads
-    //This function is set to be called on click of searchIcon in the generateForSaleContent function
-     
+    const bookIsbn = book.ISBN;
+    const minPrice = book.Min_Price;
+
+    $.ajax({
+        type: "GET",
+        url:`/for-sale/isbn/${bookIsbn}/price/${minPrice}` 
+        
+    }).then(function(response){
+        
+        for (i = 0; i < response.length; i++) {
+            const buyer = response[i];
+
+            const symbolSpan3 = $("<span>")
+            .addClass("bold")
+            .text(" ✒︎ ");
+            const buyerUsername = buyer.username;
+            const buyerEmail = buyer.email;
+
+            const listItem = $("<li>")
+            .addClass("potentialBuyer")
+            .attr("id", "buyerId" + buyer.id)
+            .append(buyerUsername, symbolSpan3, buyerEmail); 
+
+            $("#matchResults").append(listItem);
+            $("#results-modal").modal("toggle");
+        }
+    });   
 };
 
 const generateForSaleContent = function() {
@@ -115,7 +137,7 @@ const generateForSaleContent = function() {
             });
 
             searchIcon.on("click", function() {
-                handleSearchClick();
+                handleSearchClick(book);
             });
 
             const titleSpan = $("<span>")
@@ -129,7 +151,6 @@ const generateForSaleContent = function() {
         }
     });
 };
-
 
 $(document).ready(function(){      
     generateForSaleContent();
