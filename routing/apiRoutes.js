@@ -155,27 +155,41 @@ module.exports = function(app){
     });
 
     app.get("/for-sale/isbn/:selectedBookIsbn/price/:minPrice", function(req, res) {
+        console.log("in route!!!!!!!!!!!!")
         var targetIsbn = req.params.selectedBookIsbn;
+        console.log("TARGET ISBN: ", targetIsbn)
         var minPrice = req.params.minPrice;
         db.Users.findAll({
-            include: [{
+            include: [db.Wishlist]
+            
+            /*[{
                 model: Wishlist,
                 through: {
-                where: {
-                    ISBN: targetIsbn,
-                    Max_Price: {
-                        [Op.gte]: minPrice
-                    }
-                }                  
+                    where: {
+                        ISBN: targetIsbn
+                        // Max_Price: {
+                        //     [Op.gte]: minPrice
+                        // }
+                    }                  
                 }
-            }]
+            }]*/
         }).then(function(data){
             res.json(data);
         });
     });
 };
 
-
+// var filtered = [];
+//     console.log("DATA FROM LINE 173: ", data)
+//     console.log("TYPE OF!!!!!!!!!!!",typeof data)
+//     for(var key in data){
+//         if(data.hasOwnProperty(key)){
+//         var value = data[key]
+//         filtered.push(value)
+        
+//         }
+//     }
+//     console.log("VALUE: ",filtered);
    
 // db.Wishlist.findAll({
     //     where: {

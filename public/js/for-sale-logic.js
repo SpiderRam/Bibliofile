@@ -41,38 +41,32 @@ const handleUpdateClick = function(book) {
 const handleSearchClick = function(book) {
     event.preventDefault();
     console.log("Line 43: " + book.id);
-    const searchForBuyers = $("#findBuyersFor" + book.id);
 
     const bookIsbn = book.ISBN;
     const minPrice = book.Min_Price;
 
+    $.ajax({
+        type: "GET",
+        url:`/for-sale/isbn/${bookIsbn}/price/${minPrice}` 
+        
+    }).then(function(response){
+        for (i = 0; i < response.length; i++) {
+            const buyer = response[i];
 
-    //searchForBuyers.off("click");
+            const symbolSpan3 = $("<span>")
+            .addClass("bold")
+            .text(" ✒︎ ");
+            const buyerUsername = buyer.username;
+            const buyerEmail = buyer.email;
 
-    searchForBuyers.on("click", function() {
-        $.ajax({
-            type: "GET",
-            url: "/for-sale/isbn/" + bookIsbn + "/price/" + minPrice 
-        }).then(function(response){
-            for (i = 0; i < response.length; i++) {
-                const buyer = response[i];
+            const listItem = $("<li>")
+            .addClass("potentialBuyer")
+            .attr("id", "buyerId" + buyer.id)
+            .append(buyerUsername, symbolSpan3, buyerEmail); 
 
-                const symbolSpan3 = $("<span>")
-                .addClass("bold")
-                .text(" ✒︎ ");
-                const buyerUsername = buyer.username;
-                const buyerEmail = buyer.email;
-
-                const listItem = $("<li>")
-                .addClass("potentialBuyer")
-                .attr("id", "buyerId" + buyer.id)
-                .append(buyerUsername, symbolSpan3, buyerEmail); 
-
-                $("#matchResults").append(listItem);
-            }
-        });
-    });
-
+            $("#matchResults").append(listItem);
+        }
+    });   
 };
 
 const generateForSaleContent = function() {

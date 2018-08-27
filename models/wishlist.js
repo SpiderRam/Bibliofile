@@ -27,6 +27,7 @@ module.exports = function(sequelize, DataTypes) {
 
     Wishlist.associate = function(models) {
         Wishlist.belongsTo(models.Users, {
+          
             foreignKey: 
                 {
                     allowNull: false
