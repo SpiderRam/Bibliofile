@@ -155,7 +155,7 @@ $(document).ready(function(){
             
             $.ajax({
                 type:"POST",
-                url:"http://localhost:3000/for-sale",
+                url:"http://localhost:3000/forsale",
                 data: forSaleBook
             }).then(function(response){
                 document.getElementById("success").style.display="block";
