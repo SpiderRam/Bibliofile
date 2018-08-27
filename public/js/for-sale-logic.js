@@ -50,7 +50,23 @@ const handleSearchClick = function() {
             type: "GET",
             url: "/for-sale/isbn/" + bookIsbn + "/price/" + minPrice 
         }).then(function(response){
+            for (i = 0; i < response.length; i++) {
+                const buyer = response[i];
 
+                const symbolSpan3 = $("<span>")
+                .addClass("bold")
+                .text(" ✒︎ ");
+
+                const buyerUsername = buyer.username;
+                const buyerEmail = buyer.email;
+
+                const listItem = $("<li>")
+                .addClass("potentialBuyer")
+                .attr("id", "buyerId" + buyer.id)
+                .append(buyerUsername, symbolSpan3, buyerEmail); 
+
+                $("#matchResults").append(listItem);
+            }
         });
     });
 

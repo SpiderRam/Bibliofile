@@ -157,26 +157,38 @@ module.exports = function(app){
     app.get("/for-sale/isbn/:selectedBookIsbn/price/:minPrice", function(req, res) {
         var targetIsbn = req.params.selectedBookIsbn;
         var minPrice = req.params.minPrice;
-        db.Wishlist.findAll({
-            where: {
-                ISBN: targetIsbn,
-                Max_Price: {
-                    [Op.gte]: minPrice
+        db.Users.findAll({
+            include: [{
+                model: Wishlist,
+                through: {
+                where: {
+                    ISBN: targetIsbn,
+                    Max_Price: {
+                        [Op.gte]: minPrice
+                    }
+                }                  
                 }
-            }
-            //Where the isbn associated with the book id that was clicked
-            //Is the same as the isbn of any entry in the wishlist table
-            //AND the min price of the clicked id is less than or equal to
-            //the max price of the isbn on the wishlist row(s),
-            //return all usernames and emails from User foreign key on wishlist that fit those criteria
+            }]
         }).then(function(data){
             res.json(data);
         });
     });
-
-   
-
 };
 
 
    
+// db.Wishlist.findAll({
+    //     where: {
+    //         ISBN: targetIsbn,
+    //         Max_Price: {
+    //             [Op.gte]: minPrice
+    //         }
+    //     }
+
+//db.Wishlist.belongsToMany(Users, { through: 'Buyers', foreignKey: 'UserId' })
+
+//Where the isbn associated with the book id that was clicked  book.
+//Is the same as the isbn of any entry in the wishlist table
+//AND the min price of the clicked id is less than or equal to
+//the max price of the isbn on the wishlist row(s),
+//return all usernames and emails from User foreign key on wishlist that fit those criteria
