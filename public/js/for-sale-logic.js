@@ -38,12 +38,16 @@ const handleUpdateClick = function(book) {
     });
 };
 
-const handleSearchClick = function() {
+const handleSearchClick = function(book) {
     event.preventDefault();
+    console.log("Line 43: " + book.id);
     const searchForBuyers = $("#findBuyersFor" + book.id);
 
     const bookIsbn = book.ISBN;
     const minPrice = book.Min_Price;
+
+
+    //searchForBuyers.off("click");
 
     searchForBuyers.on("click", function() {
         $.ajax({
@@ -56,7 +60,6 @@ const handleSearchClick = function() {
                 const symbolSpan3 = $("<span>")
                 .addClass("bold")
                 .text(" ✒︎ ");
-
                 const buyerUsername = buyer.username;
                 const buyerEmail = buyer.email;
 
@@ -69,9 +72,6 @@ const handleSearchClick = function() {
             }
         });
     });
-
-    //.then populate <li></li> elements and append them to #matchResults inside the modal
-    //This function is set to be called on click of searchIcon in the generateForSaleContent function
 
 };
 
@@ -135,7 +135,7 @@ const generateForSaleContent = function() {
             });
 
             searchIcon.on("click", function() {
-                handleSearchClick();
+                handleSearchClick(book);
             });
 
             const titleSpan = $("<span>")
