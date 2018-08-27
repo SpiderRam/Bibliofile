@@ -144,7 +144,6 @@ const generateForSaleContent = function() {
     });
 };
 
-
 $(document).ready(function(){      
     generateForSaleContent();
 });

@@ -161,8 +161,7 @@ module.exports = function(app){
         var minPrice = req.params.minPrice;
         db.Users.findAll({
             include: [db.Wishlist]
-            
-            /*[{
+            [{
                 model: Wishlist,
                 through: {
                     where: {
@@ -172,7 +171,31 @@ module.exports = function(app){
                         // }
                     }                  
                 }
-            }]*/
+            }]
+            
+        }).then(function(data){
+            res.json(data);
+        });
+    });
+
+    app.get("/wishlist/isbn/:selectedBookIsbn/price/:maxPrice", function(req, res) {
+        var targetIsbn = req.params.selectedBookIsbn;
+        console.log("TARGET ISBN: ", targetIsbn);
+        var maxPrice = req.params.maxPrice;
+        db.Users.findAll({
+            include: [db.forsale]
+            // [{
+            //     model: forsale,
+            //     through: {
+            //         where: {
+            //             ISBN: targetIsbn
+            //             Min_Price: {
+            //                 [Op.gte]: maxPrice
+            //             }
+            //         }                  
+            //     }
+            // }]
+            
         }).then(function(data){
             res.json(data);
         });

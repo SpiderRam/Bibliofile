@@ -38,6 +38,37 @@ const handleUpdateClick = function(book) {
     });
 };
 
+const handleSearchClick = function(book) {
+    event.preventDefault();
+    console.log("Line 43: " + book.id);
+
+    const bookIsbn = book.ISBN;
+    const maxPrice = book.Max_Price;
+
+    $.ajax({
+        type: "GET",
+        url:`/wishlist/isbn/${bookIsbn}/price/${maxPrice}` 
+        
+    }).then(function(response){
+        for (i = 0; i < response.length; i++) {
+            const seller = response[i];
+
+            const symbolSpan3 = $("<span>")
+            .addClass("bold")
+            .text(" ✒︎ ");
+            const sellerUsername = seller.username;
+            const sellerEmail = seller.email;
+
+            const listItem = $("<li>")
+            .addClass("potentialSeller")
+            .attr("id", "sellerId" + seller.id)
+            .append(sellerUsername, symbolSpan3, sellerEmail); 
+
+            $("#matchResults").append(listItem);
+        }
+    });   
+};
+
 const generateWishlistContent = function() {
     var userID = sessionStorage.userID;
     $.ajax({
@@ -94,6 +125,10 @@ const generateWishlistContent = function() {
 
             editIcon.on("click", function() {
                 handleUpdateClick(book);
+            });
+
+            searchIcon.on("click", function() {
+                handleSearchClick(book);
             });
     
             const titleSpan = $("<span>")
