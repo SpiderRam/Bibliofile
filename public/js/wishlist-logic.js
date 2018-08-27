@@ -12,19 +12,31 @@ const handleDeleteClick = function (book) {
     });
 };
 
-// const handleUpdateClick = function(book) {
-//     event.preventDefault();
-//     console.log("Trying to update price on " + book.id);
+const handleUpdateClick = function(book) {
+    event.preventDefault();
+    const changeMaxPriceButton = $("#changeMaxPriceButton");
 
-//     $.ajax({
-//         type: "PUT",
-//         url: "/wishlist-update/" + book.id
-//     }).then(function(response) {
-//         generateWishlistContent();
-//         console.log(JSON.stringify(response));
-//         console.log("Updated price of  " + book.id + " in Wishlist");
-//     });
-// };
+    console.log("Trying to update price on " + book.id);
+
+    $("#changeMaxPrice").show();
+
+    changeMaxPriceButton.off("click");
+
+    changeMaxPriceButton.on("click", function() {
+        $.ajax({
+            type: "PUT",
+            url: "/wishlist-update/" + book.id,
+            data: {
+                price: $("#newMaxPrice").val()
+            }
+        }).then(function(response) {
+            generateWishlistContent();
+            console.log(JSON.stringify(response));
+            console.log("Updated price of  " + book.id + " in Wishlist");
+            $("#changeMaxPrice").hide();
+        });
+    });
+};
 
 const generateWishlistContent = function() {
     var userID = sessionStorage.userID;
@@ -38,6 +50,7 @@ const generateWishlistContent = function() {
         for (i = 0; i < response.length; i++) {
             const book = response[i];
 
+            
             const symbolSpan = $("<span>")
                 .addClass("bold")
                 .text(" ✒︎ ");
@@ -70,13 +83,17 @@ const generateWishlistContent = function() {
                 .attr("id", "editWishlistBook" + book.id);
                 
             const searchIcon = $("<img>")
-                .addClass("maxPriceUpdate")
+                .addClass("searchForContacts")
                 .attr("src", "../images/icon-request-info.png")
                 .attr("title", "Find Sellers")
-                .attr("id", "updatePriceOf" + book.id);  
+                .attr("id", "findSellersFor" + book.id);  
     
             deleteIcon.on("click", function() {
                 handleDeleteClick(book);
+            });
+
+            editIcon.on("click", function() {
+                handleUpdateClick(book);
             });
     
             const titleSpan = $("<span>")
@@ -89,9 +106,6 @@ const generateWishlistContent = function() {
     });
 };
 
-
 $(document).ready(function(){      
     generateWishlistContent();
 });
-
-
