@@ -157,20 +157,17 @@ module.exports = function(app){
     app.get("/for-sale/isbn/:selectedBookIsbn/price/:minPrice", function(req, res) {
         console.log("in route!!!!!!!!!!!!")
         var targetIsbn = req.params.selectedBookIsbn;
-        console.log("TARGET ISBN: ", targetIsbn)
+        console.log("TARGET ISBN: ", targetIsbn);
         var minPrice = req.params.minPrice;
+
+        // Max_Price: {
+        //     [Op.gte]: minPrice
+        // }
+
         db.Users.findAll({
-            include: [db.Wishlist]
-            [{
-                model: Wishlist,
-                through: {
-                    where: {
-                        ISBN: targetIsbn
-                        // Max_Price: {
-                        //     [Op.gte]: minPrice
-                        // }
-                    }                  
-                }
+            include: [{
+                model: db.Wishlist,
+                where: { ISBN: targetIsbn }                  
             }]
             
         }).then(function(data){
