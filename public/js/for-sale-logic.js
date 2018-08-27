@@ -40,13 +40,23 @@ const handleUpdateClick = function(book) {
 
 const handleSearchClick = function() {
     event.preventDefault();
-    const searchForBuyers = $("findBuyersFor" + book.id);
+    const searchForBuyers = $("#findBuyersFor" + book.id);
 
-    //build an API in apiRoutes and make a get call to it to use sequelize to return results
+    const bookIsbn = book.ISBN;
+    const minPrice = book.Min_Price;
+
+    searchForBuyers.on("click", function() {
+        $.ajax({
+            type: "GET",
+            url: "/for-sale/isbn/" + bookIsbn + "/price/" + minPrice 
+        }).then(function(response){
+
+        });
+    });
+
     //.then populate <li></li> elements and append them to #matchResults inside the modal
-    //.then call generateForSaleContent() again so that the page reloads
     //This function is set to be called on click of searchIcon in the generateForSaleContent function
-     
+
 };
 
 const generateForSaleContent = function() {
