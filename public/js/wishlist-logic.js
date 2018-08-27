@@ -65,6 +65,7 @@ const handleSearchClick = function(book) {
             .append(sellerUsername, symbolSpan3, sellerEmail); 
 
             $("#matchResults").append(listItem);
+            $("#results-modal").modal("toggle");
         }
     });   
 };

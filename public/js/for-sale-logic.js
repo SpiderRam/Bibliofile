@@ -50,7 +50,7 @@ const handleSearchClick = function(book) {
         url:`/for-sale/isbn/${bookIsbn}/price/${minPrice}` 
         
     }).then(function(response){
-        console.log("Sup buddy");
+        
         for (i = 0; i < response.length; i++) {
             const buyer = response[i];
 

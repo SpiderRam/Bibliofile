@@ -167,7 +167,7 @@ module.exports = function(app){
         db.Users.findAll({
             include: [{
                 model: db.Wishlist,
-                where: { ISBN: targetIsbn }                  
+                    where: { ISBN: targetIsbn }                  
             }]
             
         }).then(function(data){
@@ -180,22 +180,15 @@ module.exports = function(app){
         console.log("TARGET ISBN: ", targetIsbn);
         var maxPrice = req.params.maxPrice;
         db.Users.findAll({
-            include: [db.forsale]
-            // [{
-            //     model: forsale,
-            //     through: {
-            //         where: {
-            //             ISBN: targetIsbn
-            //             Min_Price: {
-            //                 [Op.gte]: maxPrice
-            //             }
-            //         }                  
-            //     }
-            // }]
+            include: [{
+                model: db.Wishlist,
+                    where: { ISBN: targetIsbn }                  
+            }]
             
         }).then(function(data){
             res.json(data);
         });
+            
     });
 };
 
