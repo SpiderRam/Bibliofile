@@ -194,30 +194,3 @@ module.exports = function (app) {
     });
 };
 
-// var filtered = [];
-//     console.log("DATA FROM LINE 173: ", data)
-//     console.log("TYPE OF!!!!!!!!!!!",typeof data)
-//     for(var key in data){
-//         if(data.hasOwnProperty(key)){
-//         var value = data[key]
-//         filtered.push(value)
-        
-//         }
-//     }
-//     console.log("VALUE: ",filtered);
-   
-// db.Wishlist.findAll({
-    //     where: {
-    //         ISBN: targetIsbn,
-    //         Max_Price: {
-    //             [Op.gte]: minPrice
-    //         }
-    //     }
-
-//db.Wishlist.belongsToMany(Users, { through: 'Buyers', foreignKey: 'UserId' })
-
-//Where the isbn associated with the book id that was clicked  book.
-//Is the same as the isbn of any entry in the wishlist table
-//AND the min price of the clicked id is less than or equal to
-//the max price of the isbn on the wishlist row(s),
-//return all usernames and emails from User foreign key on wishlist that fit those criteria
