@@ -98,16 +98,10 @@ const generateForSaleContent = function() {
             const priceSpan = $("<span>")
                 .text("Min Price: " + book.Min_Price);
 
-            const matchesButton = $("<button>")
-                .addClass("matches-button")
-                .attr("data-isbn", book.ISBN)
-                .attr("data-price", book.Min_Price)
-                .text("Matches");
-
             const listItem = $("<li>")
             .addClass("forSaleEntry")
             .attr("id", "forSaleId" + book.id)
-            .append(authorSpan, symbolSpan, priceSpan, matchesButton);
+            .append(authorSpan, symbolSpan, priceSpan);
             
             
             const deleteIcon = $("<img>")
@@ -158,36 +152,3 @@ $(document).ready(function(){
 
 
 
-// var Min_Price;
-//         for (var i = 0; i <  Max_Price; i++) {
-//           if (results[i].item_name === answer.choice) {
-//             chosenItem = results[i];
-//           }
-//         }
-
-//         // determine if bid was high enough
-//         if (chosenItem.highest_bid < parseInt(answer.bid)) {
-//           // bid was high enough, so update db, let the user know, and start over
-//           connection.query(
-//             "UPDATE auctions SET ? WHERE ?",
-//             [
-//               {
-//                 highest_bid: answer.bid
-//               },
-//               {
-//                 id: chosenItem.id
-//               }
-//             ],
-//             function(error) {
-//               if (error) throw err;
-//               console.log("Bid placed successfully!");
-//               start();
-//             }
-//           );
-//         }
-//         else {
-//           // bid wasn't high enough, so apologize and start over
-//           console.log("Your bid was too low. Try again...");
-//           start();
-//         }
-      

@@ -32,7 +32,7 @@ const handleUpdateClick = function(book) {
         }).then(function(response) {
             generateWishlistContent();
             console.log(JSON.stringify(response));
-            console.log("Updated price of  " + book.id + " in Wishlist");
+            console.log("Updated price of  " + book.id + " in wishlist");
             $("#changeMaxPrice").hide();
         });
     });
