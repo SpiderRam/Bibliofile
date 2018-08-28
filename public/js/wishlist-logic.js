@@ -30,7 +30,7 @@ const handleUpdateClick = function(book) {
                 price: $("#newMaxPrice").val()
             }
         }).then(function(response) {
-            generateForSaleContent();
+            generateWishlistContent();
             console.log(JSON.stringify(response));
             console.log("Updated price of  " + book.id + " in wishlist");
             $("#changeMaxPrice").hide();

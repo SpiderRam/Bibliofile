@@ -130,17 +130,6 @@ module.exports = function (app) {
 
     });
 
-    app.put("/wishlist-update/:bookId", function(req, res) {
-        console.log(req.body);
-        db.Wishlist.update({
-            where: {
-                Max_Price: req.body.price
-            }
-        }).then(function(data) {
-            res.json(data);
-            });
-    });
-
     app.put("/forSale-update/:bookId", function(req, res) {
         console.log(req.body);
         db.forsale.update({
