@@ -67,6 +67,9 @@ const handleSearchClick = function(book) {
             $("#matchResults").append(listItem);
             $("#results-modal").modal("toggle");
         }
+        $("#modal-button").on("click", function() {
+            $("#matchResults").empty();
+        });
     });   
 };
 

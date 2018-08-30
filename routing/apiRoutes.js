@@ -185,11 +185,9 @@ module.exports = function (app) {
     });
 
     app.get("/for-sale/isbn/:selectedBookIsbn/price/:minPrice", function(req, res) {
-        console.log("in route!!!!!!!!!!!!")
         var targetIsbn = req.params.selectedBookIsbn;
         console.log("TARGET ISBN: ", targetIsbn);
         var minPrice = req.params.minPrice;
-
         db.Users.findAll({
             include: [{
                 model: db.Wishlist,
@@ -211,8 +209,13 @@ module.exports = function (app) {
         var maxPrice = req.params.maxPrice;
         db.Users.findAll({
             include: [{
-                model: db.Wishlist,
-                    where: { ISBN: targetIsbn }                  
+                model: db.forsale,
+                    where: { 
+                        ISBN: targetIsbn,
+                        Min_Price: {
+                            [Op.gte]: maxPrice
+                        } 
+                    }                  
             }]
             
         }).then(function(data){
@@ -220,5 +223,6 @@ module.exports = function (app) {
         });
             
     });
+
 };
 
