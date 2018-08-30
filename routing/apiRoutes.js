@@ -1,6 +1,8 @@
 const request = require("request");
 const db = require("../models");
 var isbn = require('node-isbn');
+const sequelize = require("sequelize");
+const Op = sequelize.Op;
 
 module.exports = function (app) {
 
@@ -188,16 +190,16 @@ module.exports = function (app) {
         console.log("TARGET ISBN: ", targetIsbn);
         var minPrice = req.params.minPrice;
 
-        // Max_Price: {
-        //     [Op.gte]: minPrice
-        // }
-
         db.Users.findAll({
             include: [{
                 model: db.Wishlist,
-                    where: { ISBN: targetIsbn }                  
-            }]
-            
+                    where: { 
+                        ISBN: targetIsbn,
+                        Max_Price: {
+                            [Op.gte]: minPrice
+                        } 
+                    }                  
+            }]          
         }).then(function(data){
             res.json(data);
         });
