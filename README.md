@@ -11,7 +11,7 @@
 - bodyparser
 - node-isbn
 
-* To test the functionality of the site without creating your own username and password (though you are welcome to do so), we recommend using the email address user@admin.com, and password xx1234xx.
+* To test the functionality of the site without creating your own username and password (though you are welcome to do so), we recommend using the email address user@admin.com, and password xx1234xx.  Currently there is no logout feature, the user persists until the tab or window is closed.
 
 * It is necessary to search by ISBN number; this is the way the node-isbn npm package works.  This has both advantages and drawbacks:  
 - Most users would likely prefer to search by title, author, or series.  This is not possible using only this npm package, API access through GoodReads, Google, Amazon, or a similar service would be necessary to allow that.

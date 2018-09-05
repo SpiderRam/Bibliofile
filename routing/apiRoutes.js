@@ -196,7 +196,8 @@ module.exports = function (app) {
                         Max_Price: {
                             [Op.gte]: minPrice
                         } 
-                    }                  
+                    } 
+                                     
             }]          
         }).then(function(data){
             res.json(data);
@@ -215,7 +216,7 @@ module.exports = function (app) {
                         Min_Price: {
                             [Op.gte]: maxPrice
                         } 
-                    }                  
+                    }
             }]
             
         }).then(function(data){
