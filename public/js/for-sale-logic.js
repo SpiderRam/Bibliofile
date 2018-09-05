@@ -98,11 +98,7 @@ const generateForSaleContent = function() {
             const priceSpan = $("<span>")
                 .text("Min Price: " + book.Min_Price);
 
-            const matchesButton = $("<button>")
-                .addClass("matches-button")
-                .attr("data-isbn", book.ISBN)
-                .attr("data-price", book.Min_Price)
-                .text("Matches");
+    
 
             const listItem = $("<li>")
             .addClass("forSaleEntry")
