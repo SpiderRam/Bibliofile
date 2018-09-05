@@ -50,25 +50,32 @@ const handleSearchClick = function(book) {
         url:`/for-sale/isbn/${bookIsbn}/price/${minPrice}` 
         
     }).then(function(response){
-        
-        for (i = 0; i < response.length; i++) {
-            const buyer = response[i];
+        if (response.length > 0) {
+            for (i = 0; i < response.length; i++) {
+                const buyer = response[i];
 
-            const symbolSpan3 = $("<span>")
-            .addClass("bold")
-            .text(" ✒︎ ");
-            const buyerUsername = buyer.username;
-            const buyerEmail = buyer.email;
+                const symbolSpan3 = $("<span>")
+                .addClass("bold")
+                .text(" ✒︎ ");
+                const buyerUsername = buyer.username;
+                const buyerEmail = buyer.email;
 
-            const listItem = $("<li>")
-            .addClass("potentialBuyer")
-            .attr("id", "buyerId" + buyer.id)
-            .append(buyerUsername, symbolSpan3, buyerEmail); 
+                const listItem = $("<li>")
+                .addClass("potentialBuyer")
+                .attr("id", "buyerId" + buyer.id)
+                .append(buyerUsername, symbolSpan3, buyerEmail); 
 
-            $("#matchResults").append(listItem);
-            $("#results-modal").modal("toggle");
+                $("#matchResults").append(listItem);
+                $("#results-modal").modal("toggle");
+            }
+        } else {
+            $("#matchResults").text("Sorry!  No matches found.  Please try again soon.");
+                $("#results-modal").modal("toggle");
         }
-    });   
+            $("#modal-button").on("click", function() {
+                $("#matchResults").empty();
+            });
+        });   
 };
 
 const generateForSaleContent = function() {
@@ -98,12 +105,10 @@ const generateForSaleContent = function() {
             const priceSpan = $("<span>")
                 .text("Min Price: " + book.Min_Price);
 
-    
-
             const listItem = $("<li>")
             .addClass("forSaleEntry")
             .attr("id", "forSaleId" + book.id)
-            .append(authorSpan, symbolSpan, priceSpan, matchesButton);
+            .append(authorSpan, symbolSpan, priceSpan);
             
             
             const deleteIcon = $("<img>")
@@ -154,36 +159,3 @@ $(document).ready(function(){
 
 
 
-// var Min_Price;
-//         for (var i = 0; i <  Max_Price; i++) {
-//           if (results[i].item_name === answer.choice) {
-//             chosenItem = results[i];
-//           }
-//         }
-
-//         // determine if bid was high enough
-//         if (chosenItem.highest_bid < parseInt(answer.bid)) {
-//           // bid was high enough, so update db, let the user know, and start over
-//           connection.query(
-//             "UPDATE auctions SET ? WHERE ?",
-//             [
-//               {
-//                 highest_bid: answer.bid
-//               },
-//               {
-//                 id: chosenItem.id
-//               }
-//             ],
-//             function(error) {
-//               if (error) throw err;
-//               console.log("Bid placed successfully!");
-//               start();
-//             }
-//           );
-//         }
-//         else {
-//           // bid wasn't high enough, so apologize and start over
-//           console.log("Your bid was too low. Try again...");
-//           start();
-//         }
-      

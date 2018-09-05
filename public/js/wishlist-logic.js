@@ -32,7 +32,7 @@ const handleUpdateClick = function(book) {
         }).then(function(response) {
             generateWishlistContent();
             console.log(JSON.stringify(response));
-            console.log("Updated price of  " + book.id + " in Wishlist");
+            console.log("Updated price of  " + book.id + " in wishlist");
             $("#changeMaxPrice").hide();
         });
     });
@@ -67,6 +67,9 @@ const handleSearchClick = function(book) {
             $("#matchResults").append(listItem);
             $("#results-modal").modal("toggle");
         }
+        $("#modal-button").on("click", function() {
+            $("#matchResults").empty();
+        });
     });   
 };
 
