@@ -5,6 +5,8 @@ $(document).ready(function(){
     var bookToSave ={};
     var isbn = {};
 
+    $("#insertUsername").text(", " + sessionStorage.usernameText);
+
     console.log("connected");
     if(sessionStorage.userID) {
         $('#main').hide();
@@ -32,10 +34,10 @@ $(document).ready(function(){
                 url:"http://localhost:3000/new-user",
                 data: newUser
             }).then(function(response){
-                usernameText = response.username;
+                sessionStorage.usernameText = response.username;
                 sessionStorage.userID = response.id;
                 console.log(JSON.stringify(response));
-                $("#insertUsername").text(", " + usernameText);
+                $("#insertUsername").text(", " + sessionStorage.usernameText);
             }); 
         } else {
             alert("Please fill in all fields.");
@@ -61,9 +63,9 @@ $(document).ready(function(){
                 url:"http://localhost:3000/returning-user",
                 data: returningUser
             }).then(function(response){
-                usernameText = response.username;
+                sessionStorage.usernameText = response.username;
                 sessionStorage.userID = response.id;
-                $("#insertUsername").text(", " + usernameText);
+                $("#insertUsername").text(", " + sessionStorage.usernameText);
             }); 
         } else {
             alert("Please fill in all fields");
@@ -153,7 +155,7 @@ $(document).ready(function(){
             
             $.ajax({
                 type:"POST",
-                url:"http://localhost:3000/for-sale",
+                url:"http://localhost:3000/forsale",
                 data: forSaleBook
             }).then(function(response){
                 document.getElementById("success").style.display="block";

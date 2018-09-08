@@ -4,7 +4,7 @@ module.exports = function(sequelize, DataTypes) {
         
         ISBN: {
             type: DataTypes.STRING,
-            allowNull: true
+            allowNull: false
         },
         Title: {
             type: DataTypes.STRING,
@@ -33,7 +33,6 @@ module.exports = function(sequelize, DataTypes) {
                 }
         });
     };
-
     return forsale;
 };
   

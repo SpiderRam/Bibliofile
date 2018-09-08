@@ -266,7 +266,7 @@ a.nav-link.active.show {
 	border: 1px solid black;
 }
 
-/* start library, for-sale, and wishlist list item styling */
+/* start library, for-sale, and wishlist search results styling */
 
 ul {
 	list-style: none;
@@ -279,12 +279,12 @@ li {
 	color: black;
 }
 
-.libraryDelete, .wishlistDelete, .forSaleDelete, .maxPriceUpdate, .minPriceUpdate, .forSaleEdit, .wishlistEdit {
+.libraryDelete, .wishlistDelete, .forSaleDelete, .searchForContacts, .forSaleEdit, .wishlistEdit {
 	margin-right: 10px;
 	padding: 3px;
 }
 
-.libraryDelete:hover, .wishlistDelete:hover, .forSaleDelete:hover, .maxPriceUpdate:hover, .minPriceUpdate:hover, .forSaleEdit:hover, .wishlistEdit:hover {
+.libraryDelete:hover, .wishlistDelete:hover, .forSaleDelete:hover, .searchForContacts:hover, .forSaleEdit:hover, .wishlistEdit:hover {
 	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 	border: 1px solid darkred;
 }
@@ -295,4 +295,43 @@ li {
 
 .bold {
 	font-weight: bold;
+}
+
+/* start modal styling */
+
+
+.modal-header {
+	font-family: 'IM Fell English SC', serif;
+	background-image: url("../images/parchment.jpg");
+	border-bottom: 1px solid darkred;
+}
+
+.modal-title {
+	font-size: 40px;
+}
+
+.modal-body {
+	background-image: url("../images/parchment.jpg");
+	font-family: 'Cormorant', serif;
+}
+
+.modal-footer {
+	border-top: 1px solid darkred;
+	background-image: url("../images/parchment.jpg");
+	font-family: 'Cormorant', serif;
+}
+
+#modal-button {
+	font-size: 20px;
+	background-color: darkred;
+	border: 1px solid black;
+	color: burlywood;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+	width: 80%;
+	margin: 0 auto;
+}
+
+#modal-button:hover {
+	background-color: transparent;
+	color: darkred;
 }
