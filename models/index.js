@@ -8,7 +8,7 @@ var db = {};
 
 if (process.env.JAWSDB_URL){
   connection = sequelize.createConnection(process.env.JAWSDB_URL);
-} else{
+} else {
   connection = Sequelize.createConnection({
     host: 'localhost',
     user: 'root',
