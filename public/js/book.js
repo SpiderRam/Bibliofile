@@ -31,7 +31,7 @@ $(document).ready(function(){
         if (email.length > 0 && username.length > 0 && password.length > 0) {
             $.ajax({
                 type:"POST",
-                url:"http://localhost:3000/new-user",
+                url:"/new-user",
                 data: newUser
             }).then(function(response){
                 sessionStorage.usernameText = response.username;
@@ -60,7 +60,7 @@ $(document).ready(function(){
         if (email.length > 0 && password.length > 0) {
             $.ajax({
                 type:"POST",
-                url:"http://localhost:3000/returning-user",
+                url:"/returning-user",
                 data: returningUser
             }).then(function(response){
                 sessionStorage.usernameText = response.username;
@@ -81,7 +81,7 @@ $(document).ready(function(){
             console.log("search isbn: " + isbn);
             $.ajax({
                 type:"GET",
-                url:"http://localhost:3000/books/" + isbn
+                url:"/books/" + isbn
             }).then(function(response){
                 $("#book-title").text("✒︎ Title: " + response.title);
                 $("#book-author").text("✒︎ Author: " + response.authors[0]);
@@ -106,7 +106,7 @@ $(document).ready(function(){
         
         $.ajax({
             type:"POST",
-            url:"http://localhost:3000/add-to-library",
+            url:"/add-to-library",
             data: cleanBook
         }).then(function(response){
             document.getElementById("success").style.display="block";
@@ -129,7 +129,7 @@ $(document).ready(function(){
             
             $.ajax({
                 type:"POST",
-                url:"http://localhost:3000/wishlist",
+                url:"/wishlist",
                 data: wishlistBook
             }).then(function(response){
                 document.getElementById("success").style.display="block";
@@ -155,7 +155,7 @@ $(document).ready(function(){
             
             $.ajax({
                 type:"POST",
-                url:"http://localhost:3000/forsale",
+                url:"/forsale",
                 data: forSaleBook
             }).then(function(response){
                 document.getElementById("success").style.display="block";

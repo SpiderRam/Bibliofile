@@ -50,6 +50,8 @@ const handleSearchClick = function(book) {
         url:`/wishlist/isbn/${bookIsbn}/price/${maxPrice}` 
         
     }).then(function(response){
+        console.log(response);
+        if (response.length > 0) {
         for (i = 0; i < response.length; i++) {
             const seller = response[i];
 
@@ -66,11 +68,18 @@ const handleSearchClick = function(book) {
 
             $("#matchResults").append(listItem);
             $("#results-modal").modal("toggle");
+            
+            // $("#modal-button").on("click", function() {
+            //     $("#matchResults").empty();
+            }
+        } else {
+            $("#matchResults").text("Sorry!  No matches found.  Please try again soon.");
+                $("#results-modal").modal("toggle");
         }
-        $("#modal-button").on("click", function() {
-            $("#matchResults").empty();
-        });
-    });   
+            $("#modal-button").on("click", function() {
+                $("#matchResults").empty();
+            });
+        });  
 };
 
 const generateWishlistContent = function() {

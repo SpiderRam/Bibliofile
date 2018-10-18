@@ -24,21 +24,17 @@ module.exports = function(sequelize, DataTypes) {
             {
                 onDelete: "cascade"
             });
-    };
-    
-    Users.associate = function(models) {
-        Users.hasMany(models.forsale, 
-            {
-                onDelete: "cascade"
-            });
-    };
-    
-    Users.associate = function(models) {
-        Users.hasMany(models.Wishlist, 
+
+            Users.hasMany(models.forsale, 
+                {
+                    onDelete: "cascade"
+                });
+
+                Users.hasMany(models.Wishlist, 
         
-            {
-                onDelete: "cascade"
-            });
+                    {
+                        onDelete: "cascade"
+                    });
     };
     
     return Users;
